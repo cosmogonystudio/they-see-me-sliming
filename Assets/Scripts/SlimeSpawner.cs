@@ -4,6 +4,13 @@ using UnityEngine;
 public class SlimeSpawner : MonoBehaviour
 {
 
+    public enum SpawnType
+    {
+        None,
+        Up,
+        Right
+    }
+
     [SerializeField]
     private GameObject spwanee;
 
@@ -15,7 +22,10 @@ public class SlimeSpawner : MonoBehaviour
     [SerializeField]
     private int spawnNumber;
 
-    public bool stopSpawning = false;
+    [SerializeField]
+    private SpawnType spawnType;
+
+    private bool stopSpawning = false;
 
     private List<Slime> slimes = new List<Slime>();
 
@@ -23,28 +33,31 @@ public class SlimeSpawner : MonoBehaviour
 
     private const string spawnMethod = "Spawn";
 
-    public int SlimesCount()
-    {
-        return slimes.Count;
-    }
-
-    void Start()
-    {
-        spawnPosition = new Vector3(transform.position.x + (transform.localScale.x / 2f), transform.position.y, transform.position.y);
-
-        InvokeRepeating(spawnMethod, spawnTime, spawnRate);
-    }
-
-    private void Spawn()
+    public void Spawn()
     {
         if (stopSpawning == false)
         {
-            GameObject instantiatedSpawn = Instantiate(spwanee, spawnPosition, transform.rotation);
+            GameObject instantiatedSpawn = Instantiate(spwanee, spawnPosition, Quaternion.identity);
 
             instantiatedSpawn.transform.SetParent(transform);
 
-            slimes.Add(instantiatedSpawn.GetComponent<Slime>());
-        
+            Slime slime = instantiatedSpawn.GetComponent<Slime>();
+
+            switch (spawnType)
+            {
+                case SpawnType.Up:
+                    slime.Fall();
+                    break;
+                case SpawnType.Right:
+                    slime.KeepWalking();
+                    break;
+                default:
+                    slime.KeepWalking();
+                    break;
+            }
+
+            slimes.Add(slime);
+
             if (slimes.Count >= spawnNumber)
             {
                 stopSpawning = true;
@@ -54,6 +67,29 @@ public class SlimeSpawner : MonoBehaviour
         {
             CancelInvoke(spawnMethod);
         }
+    }
+
+    public int SlimesCount()
+    {
+        return slimes.Count;
+    }
+
+    void Start()
+    {
+        switch (spawnType)
+        {
+            case SpawnType.Up:
+                spawnPosition = new Vector3(transform.position.x, transform.position.y + (transform.localScale.y / 2f), transform.position.z);
+                break;
+            case SpawnType.Right:
+                spawnPosition = new Vector3(transform.position.x + (transform.localScale.x / 2f), transform.position.y, transform.position.z);
+                break;
+            default:
+                spawnPosition = transform.position;
+                break;
+        }
+        
+        InvokeRepeating(spawnMethod, spawnTime, spawnRate);
     }
 
 }

@@ -1,9 +1,8 @@
-public class Exit : SlimeTrigger
+public class Exit : SlimeCollider
 {
-
-    protected override void OnAllSmiles()
+    protected override void OnSlime(Slime slime)
     {
-        GameManager.GetInstance().NextLevel();
+        slime.DeeperAndDeeper();
     }
 
 }

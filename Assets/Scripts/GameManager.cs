@@ -6,13 +6,15 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private GameObject[] levels;
 
-    [HideInInspector]
-    public int slimesCount;
-
     private SlimeSpawner currentSpawner;
 
     private int levelIndex = 0;
 
+    private int slimesItCount;
+    private int slimesUsedCount;
+    private int slimesDeadCount;
+    private int slimesDeeperCount;
+    
     private static GameManager instance = null;
 
     public static GameManager GetInstance()
@@ -20,21 +22,45 @@ public class GameManager : MonoBehaviour
         return instance;
     }
 
-    public void NextLevel()
+    public void SlimeIt(Slime.SlimeStatus slimeStatus)
     {
-        levels[levelIndex++].SetActive(false);
-
-        if (levelIndex < levels.Length)
+        switch (slimeStatus)
         {
-            slimesCount = 0;
-
-            levels[levelIndex].SetActive(true);
+            case Slime.SlimeStatus.Used:
+                slimesUsedCount++;
+                break;
+            case Slime.SlimeStatus.Dead:
+                slimesDeadCount++;
+                break;
+            case Slime.SlimeStatus.Deeper:
+                slimesDeeperCount++;
+                break;
+            default:
+                break;
         }
-    }
 
-    public bool SlimeUp()
-    {
-        return (++slimesCount >= currentSpawner.SlimesCount());
+        slimesItCount = slimesUsedCount + slimesDeadCount + slimesDeeperCount;
+
+        if (slimesItCount >= currentSpawner.SlimesCount())
+        {
+            switch (slimeStatus)
+            {
+                case Slime.SlimeStatus.Dead:
+                    // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+#if UNITY_EDITOR
+                    UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+                    break;
+                case Slime.SlimeStatus.Deeper:
+                    NextLevel();
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 
     void Awake()
@@ -47,8 +73,6 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
-        // DontDestroyOnLoad(gameObject);
     }
 
     void Start()
@@ -58,9 +82,29 @@ public class GameManager : MonoBehaviour
             levels[i].SetActive(i == levelIndex);
         }
 
-        slimesCount = 0;
+        SetCurrentSpawner();
+    }
+
+    private void SetCurrentSpawner()
+    {
+        slimesItCount = 0;
+        slimesDeadCount = 0;
+        slimesDeeperCount = 0;
+        slimesUsedCount = 0;
 
         currentSpawner = levels[levelIndex].GetComponentInChildren<SlimeSpawner>();
     }
 
+    private void NextLevel()
+    {
+        levels[levelIndex++].SetActive(false);
+
+        if (levelIndex < levels.Length)
+        {
+            levels[levelIndex].SetActive(true);
+
+            SetCurrentSpawner();
+        }
+    }
+    
 }

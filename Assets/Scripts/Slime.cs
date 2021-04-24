@@ -3,14 +3,76 @@ using UnityEngine;
 public class Slime : MonoBehaviour
 {
 
+    public enum SlimeStatus
+    {
+        Default,
+        InAir,
+        Paused,
+        Used,
+        Dead,
+        Deeper
+    }
+
     [SerializeField]
     private float moveSpeed;
 
     private Rigidbody2D m_rigidbody2D;
 
-    private bool inAir = false;
+    private Vector2 direction = Vector2.right;
+
+    private SlimeStatus slimeStatus = SlimeStatus.Default;
 
     private const string floorTag = "Floor";
+
+    public SlimeStatus GetSlimeStatus()
+    {
+        return slimeStatus;
+    }
+
+    public void KeepWalking()
+    {
+        slimeStatus = SlimeStatus.Default;
+    }
+
+    public void Fall()
+    {
+        slimeStatus = SlimeStatus.InAir;
+    }
+
+    public void Pause()
+    {
+        slimeStatus = SlimeStatus.Paused;
+    }
+
+    public void Use()
+    {
+        slimeStatus = SlimeStatus.Used;
+
+        SlimeIt();
+    }
+
+    public void Die()
+    {
+        slimeStatus = SlimeStatus.Dead;
+
+        gameObject.SetActive(false);
+
+        SlimeIt();
+    }
+
+    public void DeeperAndDeeper()
+    {
+        slimeStatus = SlimeStatus.Deeper;
+
+        gameObject.SetActive(false);
+
+        SlimeIt();
+    }
+
+    public void Invert()
+    {
+        direction *= -1;
+    }
 
     void Awake()
     {
@@ -19,9 +81,9 @@ public class Slime : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (inAir == false)
+        if (slimeStatus == SlimeStatus.Default)
         {
-            m_rigidbody2D.MovePosition(m_rigidbody2D.position + Vector2.right * moveSpeed * Time.fixedDeltaTime);
+            m_rigidbody2D.MovePosition(m_rigidbody2D.position + direction * moveSpeed * Time.fixedDeltaTime);
         }
     }
 
@@ -29,9 +91,7 @@ public class Slime : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(floorTag))
         {
-            // Debug.Log("Slime:OnCollisionEnter2D:collision.collider.tag: " + collision.collider.tag);
-
-            inAir = false;
+            slimeStatus = SlimeStatus.Default;
         }
     }
 
@@ -39,10 +99,13 @@ public class Slime : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(floorTag))
         {
-            // Debug.Log("Slime:OnCollisionExit2D:collision.collider.tag: " + collision.collider.tag);
-
-            inAir = true;
+            slimeStatus = SlimeStatus.InAir;
         }
+    }
+
+    private void SlimeIt()
+    {
+        GameManager.GetInstance().SlimeIt(slimeStatus);
     }
 
 }
