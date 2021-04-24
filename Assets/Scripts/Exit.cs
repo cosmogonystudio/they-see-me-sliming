@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class Exit : SlimeCollider
 {
     protected override void OnSlime(Slime slime)

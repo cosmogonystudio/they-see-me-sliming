@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -5,6 +7,16 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]
     private GameObject[] levels;
+
+    [SerializeField]
+    private GameObject deeperMessage;
+    [SerializeField]
+    private GameObject andDeeperMessage;
+
+    [SerializeField]
+    private float deepTextSeconds;
+
+    private WaitForSeconds deepWaitForSeconds;
 
     private SlimeSpawner currentSpawner;
 
@@ -46,16 +58,10 @@ public class GameManager : MonoBehaviour
             switch (slimeStatus)
             {
                 case Slime.SlimeStatus.Dead:
-                    // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-
-#if UNITY_EDITOR
-                    UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
+                    StartCoroutine(AndGoDeeper());
                     break;
                 case Slime.SlimeStatus.Deeper:
-                    NextLevel();
+                    StartCoroutine(GoDeeper());
                     break;
                 default:
                     break;
@@ -68,6 +74,13 @@ public class GameManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+
+            for (int i = 0; i < levels.Length; i++)
+            {
+                levels[i].SetActive(false);
+            }
+
+            deepWaitForSeconds = new WaitForSeconds(deepTextSeconds);
         }
         else if (instance != this)
         {
@@ -77,12 +90,39 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        for (int i = 0; i < levels.Length; i++)
-        {
-            levels[i].SetActive(i == levelIndex);
-        }
-
         SetCurrentSpawner();
+    }
+
+    IEnumerator GoDeeper()
+    {
+        deeperMessage.SetActive(true);
+
+        yield return deepWaitForSeconds;
+
+        deeperMessage.SetActive(false);
+
+        NextLevel();
+
+        yield break;
+    }
+
+    IEnumerator AndGoDeeper()
+    {
+        andDeeperMessage.SetActive(true);
+
+        yield return deepWaitForSeconds;
+
+        andDeeperMessage.SetActive(false);
+
+        // SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
+
+        yield break;
     }
 
     private void SetCurrentSpawner()
@@ -91,6 +131,11 @@ public class GameManager : MonoBehaviour
         slimesDeadCount = 0;
         slimesDeeperCount = 0;
         slimesUsedCount = 0;
+
+        deeperMessage.SetActive(false);
+        andDeeperMessage.SetActive(false);
+
+        levels[levelIndex].SetActive(true);
 
         currentSpawner = levels[levelIndex].GetComponentInChildren<SlimeSpawner>();
     }
@@ -101,8 +146,6 @@ public class GameManager : MonoBehaviour
 
         if (levelIndex < levels.Length)
         {
-            levels[levelIndex].SetActive(true);
-
             SetCurrentSpawner();
         }
     }

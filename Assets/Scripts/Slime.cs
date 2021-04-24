@@ -18,9 +18,11 @@ public class Slime : MonoBehaviour
 
     private Rigidbody2D m_rigidbody2D;
 
+    private Animator animator;
+
     private Vector2 direction = Vector2.right;
 
-    private SlimeStatus slimeStatus = SlimeStatus.Default;
+    private SlimeStatus slimeStatus;
 
     private const string floorTag = "Floor";
 
@@ -31,11 +33,15 @@ public class Slime : MonoBehaviour
 
     public void KeepWalking()
     {
+        animator.speed = 1f;
+
         slimeStatus = SlimeStatus.Default;
     }
 
     public void Fall()
     {
+        animator.speed = 0f;
+
         slimeStatus = SlimeStatus.InAir;
     }
 
@@ -64,9 +70,9 @@ public class Slime : MonoBehaviour
     {
         slimeStatus = SlimeStatus.Deeper;
 
-        gameObject.SetActive(false);
-
         SlimeIt();
+
+        gameObject.SetActive(false);
     }
 
     public void Invert()
@@ -77,6 +83,13 @@ public class Slime : MonoBehaviour
     void Awake()
     {
         m_rigidbody2D = GetComponent<Rigidbody2D>();
+
+        animator = GetComponent<Animator>();
+    }
+
+    void Start()
+    {
+        animator.speed = 0f;
     }
 
     void FixedUpdate()
@@ -91,7 +104,7 @@ public class Slime : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(floorTag))
         {
-            slimeStatus = SlimeStatus.Default;
+            KeepWalking();
         }
     }
 
@@ -99,7 +112,7 @@ public class Slime : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(floorTag))
         {
-            slimeStatus = SlimeStatus.InAir;
+            Fall();
         }
     }
 

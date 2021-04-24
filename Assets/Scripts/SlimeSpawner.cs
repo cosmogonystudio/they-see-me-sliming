@@ -7,7 +7,7 @@ public class SlimeSpawner : MonoBehaviour
     public enum SpawnType
     {
         None,
-        Up,
+        Down,
         Right
     }
 
@@ -45,7 +45,7 @@ public class SlimeSpawner : MonoBehaviour
 
             switch (spawnType)
             {
-                case SpawnType.Up:
+                case SpawnType.Down:
                     slime.Fall();
                     break;
                 case SpawnType.Right:
@@ -78,8 +78,8 @@ public class SlimeSpawner : MonoBehaviour
     {
         switch (spawnType)
         {
-            case SpawnType.Up:
-                spawnPosition = new Vector3(transform.position.x, transform.position.y + (transform.localScale.y / 2f), transform.position.z);
+            case SpawnType.Down:
+                spawnPosition = new Vector3(transform.position.x, transform.position.y - (transform.localScale.y / 2f), transform.position.z);
                 break;
             case SpawnType.Right:
                 spawnPosition = new Vector3(transform.position.x + (transform.localScale.x / 2f), transform.position.y, transform.position.z);
