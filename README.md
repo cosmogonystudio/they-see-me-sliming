@@ -1,2 +1,4 @@
-# they-see-me-sliming
-They See Me Sliming
+# Cosmogony Studio
+
+# They See Me Sliming
+Ludum Dare 48
