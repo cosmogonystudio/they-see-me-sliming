@@ -305,12 +305,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 196896999}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52ce7790d1bca7a439cb0a799a967108, type: 3}
+  m_Script: {fileID: 11500000, guid: 5742eb6f024eefa4dacdfad728bbe136, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scaleX: 0.1
-  scaleY: 0.1
-  color: {x: 209, y: 241, z: 156}
+  scaleX: 0
+  scaleY: 0
+  color: {x: 0, y: 0, z: 0}
 --- !u!114 &196897002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -740,8 +740,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 00
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3e8dfe2975beeb74c94d76879349f9f9, type: 2}
-  m_sharedMaterial: {fileID: -166450874424539768, guid: 3e8dfe2975beeb74c94d76879349f9f9, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 042bbf863ec92314e9580a8bb2c3cff5, type: 2}
+  m_sharedMaterial: {fileID: -4168396747335789592, guid: 042bbf863ec92314e9580a8bb2c3cff5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -765,8 +765,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 8
-  m_fontSizeBase: 8
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1577,7 +1577,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 35.2, y: -1.2}
+  m_AnchoredPosition: {x: 35.1, y: 0.0000041723}
   m_SizeDelta: {x: 34.833, y: 9.3341}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &925548784
@@ -1602,8 +1602,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 00
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3e8dfe2975beeb74c94d76879349f9f9, type: 2}
-  m_sharedMaterial: {fileID: -166450874424539768, guid: 3e8dfe2975beeb74c94d76879349f9f9, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 042bbf863ec92314e9580a8bb2c3cff5, type: 2}
+  m_sharedMaterial: {fileID: -4168396747335789592, guid: 042bbf863ec92314e9580a8bb2c3cff5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1627,8 +1627,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 8
-  m_fontSizeBase: 8
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2235,12 +2235,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1228320284}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52ce7790d1bca7a439cb0a799a967108, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c9b557ef114b9b44bf1af11d0189a1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scaleX: 0.1
-  scaleY: 0.1
-  color: {x: 209, y: 241, z: 156}
+  scaleX: 0
+  scaleY: 0
+  color: {x: 0, y: 0, z: 0}
 --- !u!114 &1228320287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2313,7 +2313,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 34.3, y: 0}
+  m_AnchoredPosition: {x: 35, y: 0}
   m_SizeDelta: {x: 34.8328, y: 9.3341}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1261067101
@@ -2338,8 +2338,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 00
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3e8dfe2975beeb74c94d76879349f9f9, type: 2}
-  m_sharedMaterial: {fileID: -166450874424539768, guid: 3e8dfe2975beeb74c94d76879349f9f9, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 042bbf863ec92314e9580a8bb2c3cff5, type: 2}
+  m_sharedMaterial: {fileID: -4168396747335789592, guid: 042bbf863ec92314e9580a8bb2c3cff5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2363,8 +2363,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 8
-  m_fontSizeBase: 8
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -2895,12 +2895,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1614995988}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52ce7790d1bca7a439cb0a799a967108, type: 3}
+  m_Script: {fileID: 11500000, guid: bfc2b6a814810f441bebf1a65efe703d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scaleX: 0.1
-  scaleY: 0.1
-  color: {x: 209, y: 241, z: 156}
+  scaleX: 0
+  scaleY: 0
+  color: {x: 0, y: 0, z: 0}
 --- !u!114 &1614995991
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3606,12 +3606,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2086777746}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 52ce7790d1bca7a439cb0a799a967108, type: 3}
+  m_Script: {fileID: 11500000, guid: d72f673ea21e8064995145d77fe00b35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scaleX: 0.1
-  scaleY: 0.1
-  color: {x: 209, y: 241, z: 156}
+  scaleX: 0
+  scaleY: 0
+  color: {x: 0, y: 0, z: 0}
 --- !u!114 &2086777749
 MonoBehaviour:
   m_ObjectHideFlags: 0
