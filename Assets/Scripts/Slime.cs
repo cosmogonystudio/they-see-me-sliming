@@ -20,6 +20,8 @@ public class Slime : MonoBehaviour
 
     private Animator animator;
 
+    private SpriteRenderer spriteRenderer;
+
     private Vector2 direction = Vector2.right;
 
     private SlimeStatus slimeStatus;
@@ -78,6 +80,8 @@ public class Slime : MonoBehaviour
     public void Invert()
     {
         direction *= -1;
+
+        spriteRenderer.flipX = !spriteRenderer.flipX;
     }
 
     void Awake()
@@ -85,6 +89,8 @@ public class Slime : MonoBehaviour
         m_rigidbody2D = GetComponent<Rigidbody2D>();
 
         animator = GetComponent<Animator>();
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Start()

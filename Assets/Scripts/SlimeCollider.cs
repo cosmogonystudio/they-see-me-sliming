@@ -7,22 +7,12 @@ public abstract class SlimeCollider : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        SlimeCollide(collision.gameObject);
-    }
-
-    protected virtual void OnColliderEnter2D(Collider2D collision)
-    {
-        SlimeCollide(collision.gameObject);
+        if (collision.gameObject.CompareTag(slimeTag))
+        {
+            OnSlime(collision.gameObject.GetComponent<Slime>());
+        }
     }
 
     protected abstract void OnSlime(Slime slime);
-
-    private void SlimeCollide(GameObject collisionGameObject)
-    {
-        if (collisionGameObject.CompareTag(slimeTag))
-        {
-            OnSlime(collisionGameObject.GetComponent<Slime>());
-        }
-    }
 
 }

@@ -6,7 +6,6 @@ TagManager:
   tags:
   - Slime
   - Floor
-  - Exit
   layers:
   - Default
   - TransparentFX
