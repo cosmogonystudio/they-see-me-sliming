@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: dd100d02a4493b142a04e6345983c28c
+=======
+guid: cf6f4172dc7acb74c93acae85b0b45c6
+>>>>>>> origin/feature/slime-power-ups
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: f33a437ca4234f7459f1095653e4f234
+=======
+guid: 28fcdcec04349e74ab2783b77ba6ad7e
+>>>>>>> origin/feature/slime-power-ups
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 7400000

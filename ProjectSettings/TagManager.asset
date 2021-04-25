@@ -3,9 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
+<<<<<<< HEAD
   tags:
   - Slime
   - Floor
+=======
+  tags: []
+>>>>>>> origin/feature/slime-power-ups
   layers:
   - Default
   - TransparentFX
@@ -40,9 +44,12 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+<<<<<<< HEAD
   - name: Background
     uniqueID: 2733982091
     locked: 0
+=======
+>>>>>>> origin/feature/slime-power-ups
   - name: Default
     uniqueID: 0
     locked: 0
