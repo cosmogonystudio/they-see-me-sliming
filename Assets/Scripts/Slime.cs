@@ -17,7 +17,7 @@ public class Slime : MonoBehaviour
     private float moveSpeed;
 
     private Rigidbody2D m_rigidbody2D;
-
+    private Collider2D coll;
     private Animator animator;
 
     private SpriteRenderer spriteRenderer;
@@ -25,7 +25,8 @@ public class Slime : MonoBehaviour
     private Vector2 direction = Vector2.right;
 
     private SlimeStatus slimeStatus;
-
+    [SerializeField] private LayerMask layer;
+    [SerializeField] private float boxReach;
     private const string floorTag = "Floor";
 
     public SlimeStatus GetSlimeStatus()
@@ -91,22 +92,30 @@ public class Slime : MonoBehaviour
         animator = GetComponent<Animator>();
 
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        coll = GetComponent<BoxCollider2D>();
     }
 
     void Start()
     {
         animator.speed = 0f;
+        slimeStatus = SlimeStatus.InAir;
     }
 
     void FixedUpdate()
     {
+        m_rigidbody2D.velocity = Vector2.zero;
+
+        CheckGround();
+
         if (slimeStatus == SlimeStatus.Default)
         {
             m_rigidbody2D.MovePosition(m_rigidbody2D.position + direction * moveSpeed * Time.fixedDeltaTime);
         }
+
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    /*void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag(floorTag))
         {
@@ -120,6 +129,20 @@ public class Slime : MonoBehaviour
         {
             Fall();
         }
+    }*/
+
+    void CheckGround()
+    {
+        RaycastHit2D hit = Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, boxReach, layer);
+        if(hit.collider != null)
+        {
+            KeepWalking();
+        } else 
+        {
+            Fall();
+        }
+
+        //Debug.Log(slimeStatus);
     }
 
     private void SlimeIt()
