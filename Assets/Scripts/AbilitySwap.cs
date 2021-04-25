@@ -7,12 +7,12 @@ public class AbilitySwap : MonoBehaviour {
 
     public enum AbilityType
     {
+        Horn, // Apito
+        Wall,
         Bridge,
         Hook,
         Cannon,
-        Boat,
-        Wall,
-        Horn
+        Boat
     }
 
     public void SetAbilityType(AbilityType abilityType)
@@ -47,8 +47,6 @@ public class Bridge : MonoBehaviour, IAbility
     {
         Instantiate(bridge, position, Quaternion.identity);
     }
-
-    
 }
 
 public class Hook : MonoBehaviour, IAbility
@@ -66,6 +64,10 @@ public class Cannon : MonoBehaviour, IAbility
     public void useAbility(Vector2 position)
     {
         Instantiate(cannon, position, Quaternion.identity);
+
+        // Destroi
+        // Constroi um cannon
+        // Outro
     }
 }
 
@@ -75,6 +77,13 @@ public class Boat : MonoBehaviour, IAbility
     public void useAbility(Vector2 position)
     {
         Instantiate(boat, position, Quaternion.identity);
+
+        // Clica no bote
+        // Clica no slime - equipar bote
+        // Morre na água
+        // Espera a galera subir
+
+        // Amortece a queda
     }
 }
 

@@ -442,15 +442,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1959351327997494966, guid: a358c5f847d66214ab85557888ef2cdb, type: 3}
       propertyPath: spawnRate
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1959351327997494966, guid: a358c5f847d66214ab85557888ef2cdb, type: 3}
       propertyPath: spawnTime
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1959351327997494966, guid: a358c5f847d66214ab85557888ef2cdb, type: 3}
       propertyPath: spawnNumber
-      value: 6
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1959351327997494967, guid: a358c5f847d66214ab85557888ef2cdb, type: 3}
       propertyPath: m_RootOrder
@@ -922,7 +922,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: and deeper..
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1349a30879506384883263507a05d22b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3e8dfe2975beeb74c94d76879349f9f9, type: 2}
   m_sharedMaterial: {fileID: -5773646671575428721, guid: 1349a30879506384883263507a05d22b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -986,7 +986,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &881102121
@@ -1317,7 +1317,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: deeper
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 1349a30879506384883263507a05d22b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 3e8dfe2975beeb74c94d76879349f9f9, type: 2}
   m_sharedMaterial: {fileID: -5773646671575428721, guid: 1349a30879506384883263507a05d22b, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1381,7 +1381,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
+  m_hasFontAssetChanged: 1
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1045228858
@@ -2541,7 +2541,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7765638311540364726, guid: ba727b8344823674fb48f6e9b41d98b2, type: 3}
       propertyPath: m_Name
-      value: Wall
+      value: Block
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba727b8344823674fb48f6e9b41d98b2, type: 3}

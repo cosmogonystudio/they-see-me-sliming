@@ -1,4 +1,4 @@
-public class Wall : SlimeCollider
+public class Block : SlimeTrigger
 {
     protected override void OnSlime(Slime slime)
     {

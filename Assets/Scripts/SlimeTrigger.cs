@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class SlimeCollider : MonoBehaviour
+public abstract class SlimeTrigger : MonoBehaviour
 {
 
     private const string slimeTag = "Slime";

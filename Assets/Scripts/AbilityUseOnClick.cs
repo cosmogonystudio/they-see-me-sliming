@@ -13,8 +13,8 @@ public class AbilityUseOnClick : MonoBehaviour
         
         RaycastHit2D hit2D = Physics2D.GetRayIntersection(ray);
         if (hit2D.collider != null) {
-                IAbility ability = hit2D.collider.GetComponent<IAbility>();
-                ability.useAbility(mousePosition);
+            IAbility ability = hit2D.collider.GetComponent<IAbility>();
+            ability.useAbility(mousePosition);
         }
     }
     }

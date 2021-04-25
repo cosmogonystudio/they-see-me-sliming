@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Hole : SlimeCollider
+public class Hole : SlimeTrigger
 {
     protected override void OnSlime(Slime slime)
     {

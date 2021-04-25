@@ -8,32 +8,32 @@ public class Hotbar : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             abilitySwap.SetAbilityType(AbilitySwap.AbilityType.Bridge);
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (Input.GetKeyDown(KeyCode.W))
         {
             abilitySwap.SetAbilityType(AbilitySwap.AbilityType.Hook);
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             abilitySwap.SetAbilityType(AbilitySwap.AbilityType.Cannon);
         }
 
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.A))
         {
             abilitySwap.SetAbilityType(AbilitySwap.AbilityType.Boat);
         }
 
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.S))
         {
             abilitySwap.SetAbilityType(AbilitySwap.AbilityType.Wall);
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.D))
         {
             abilitySwap.SetAbilityType(AbilitySwap.AbilityType.Horn);
         }
