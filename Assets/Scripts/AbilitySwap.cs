@@ -100,5 +100,6 @@ public class Horn : MonoBehaviour, IAbility
 {
     public void useAbility(Vector2 position)
     {
+        
     }
 }
