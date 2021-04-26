@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
 
         slimesItCount = slimesUsedCount + slimesDeadCount + slimesDeeperCount;
 
-        if (slimesItCount >= currentSpawner.SlimesCount())
+        if (slimesItCount >= currentSpawner.SpawnNumber())
         {
             switch (slimeStatus)
             {
