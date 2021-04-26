@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private float deepTextSeconds;
 
+    [SerializeField]
+    private AbilitySwap abilitySwap;
+
     private WaitForSeconds deepWaitForSeconds;
 
     private SlimeSpawner currentSpawner;
@@ -54,7 +57,7 @@ public class GameManager : MonoBehaviour
 
         slimesItCount = slimesUsedCount + slimesDeadCount + slimesDeeperCount;
 
-        if (slimesItCount >= currentSpawner.SlimesCount())
+        if (slimesItCount >= currentSpawner.SpawnNumber())
         {
             switch (slimeStatus)
             {
@@ -68,6 +71,21 @@ public class GameManager : MonoBehaviour
                     break;
             }
         }
+    }
+
+    public void SetAbilityType(AbilitySwap.AbilityType abilityType)
+    {
+        abilitySwap.SetAbilityType(abilityType);
+    }
+
+    public void UseAbility(Slime slime)
+    {
+        abilitySwap.UseAbility(slime, currentSpawner.GetAbleSlimes());
+    }
+
+    public void OnAbilityUse()
+    {
+        abilitySwap.OnAbilityUse();
     }
 
     void Awake()
@@ -116,14 +134,6 @@ public class GameManager : MonoBehaviour
         andDeeperMessage.SetActive(false);
 
         SceneManager.LoadScene("StartScene");
-
-        /*
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Application.Quit();
-#endif
-        */
 
         yield break;
     }

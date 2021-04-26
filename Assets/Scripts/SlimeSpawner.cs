@@ -74,6 +74,16 @@ public class SlimeSpawner : MonoBehaviour
         return slimes.Count;
     }
 
+    public int SpawnNumber()
+    {
+        return spawnNumber;
+    }
+
+    public List<Slime> GetAbleSlimes()
+    {
+        return slimes.FindAll(slime => slime.GetSlimeStatus() == Slime.SlimeStatus.Default);
+    }
+
     void Start()
     {
         switch (spawnType)

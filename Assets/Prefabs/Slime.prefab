@@ -14,8 +14,6 @@ GameObject:
   - component: {fileID: 5407223556578535494}
   - component: {fileID: 5407223556578535493}
   - component: {fileID: 5407223556578535495}
-  - component: {fileID: 1009470976}
-  - component: {fileID: -1550291559930522340}
   m_Layer: 6
   m_Name: Slime
   m_TagString: Slime
@@ -32,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5407223556578535498}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -82,7 +80,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.1572616, y: 2.15625}
+  m_Size: {x: 2.8763487, y: 2.875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -114,7 +112,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5407223556578535498}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -125,7 +123,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 2.8763487, y: 2.875}
-    newSize: {x: 2.1572616, y: 2.15625}
+    newSize: {x: 2.8763487, y: 2.875}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -148,8 +146,8 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 20
-  m_Material: {fileID: 6200000, guid: f5b3325011a4d114cb810933fe80c44e, type: 2}
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -166,41 +164,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c224380839b328e448bbeabb5ffc8d8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 2
-  direction: {x: 1, y: 0}
-  layer:
-    serializedVersion: 2
-    m_Bits: 128
-  boxReach: 0.05
---- !u!70 &1009470976
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5407223556578535498}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.114222765, y: -0.22172809}
-  m_Size: {x: 2.1103787, y: 2.4328923}
-  m_Direction: 0
---- !u!114 &-1550291559930522340
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5407223556578535498}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3b3db910440e004683fc9cecbcf07b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boxReach: 0.05
-  layer:
-    serializedVersion: 2
-    m_Bits: 128
+  moveSpeed: 4
+  spriteDefault: {fileID: -3621471453987803102, guid: 763fda0784756034781e5e85be7ef3cf, type: 3}
+  spriteFall: {fileID: 8358847539892940752, guid: 763fda0784756034781e5e85be7ef3cf, type: 3}
+  spriteBridge: {fileID: 21300000, guid: de754daf0605c9348bc4de48c03f3ec8, type: 3}
+  spriteHook: {fileID: 21300000, guid: b6653b2374e6d594a82b3b531f28a9d9, type: 3}
+  spriteCannon: {fileID: 21300000, guid: 0f1141325ca56b34188a8f98415dd574, type: 3}
+  spriteBoat: {fileID: 21300000, guid: d5e13f00b0589b24ab8b3babfa9aa09e, type: 3}
+  spriteWall: {fileID: 21300000, guid: f8ca615f31fc2314395e236d73afeaee, type: 3}
