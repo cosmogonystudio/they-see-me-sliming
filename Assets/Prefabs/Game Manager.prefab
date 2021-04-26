@@ -188,15 +188,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29d0f9b9fb784cf42a1dba8666b5ec6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levels:
-  - {fileID: 8931237855637108036}
-  - {fileID: 8931237856807283598}
-  - {fileID: 8931237857106054614}
-  - {fileID: 8931237856752853416}
   deeperMessage: {fileID: 0}
   andDeeperMessage: {fileID: 0}
   deepTextSeconds: 1.5
   abilitySwap: {fileID: 0}
+  currentSpawner: {fileID: 0}
 --- !u!1001 &1055165594996755485
 PrefabInstance:
   m_ObjectHideFlags: 0

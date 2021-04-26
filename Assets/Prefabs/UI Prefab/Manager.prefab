@@ -57,6 +57,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef8274ca64b9414428fd9663e81a8f14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seconds: 0
-  minutes: 0
   timeText: {fileID: 0}

@@ -313,8 +313,9 @@ GameObject:
   - component: {fileID: 4744848208931152110}
   - component: {fileID: 4744848208931152108}
   - component: {fileID: 4744848208931152109}
+  - component: {fileID: 848116718}
   m_Layer: 5
-  m_Name: Button 1
+  m_Name: Apito
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -378,6 +379,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &848116718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4744848208931152111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3ecb43ee19bd2c4a9488914326d1cce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityType: 6
+  scaleX: 0.1
+  scaleY: 0.1
 --- !u!1 &4744848209018252787
 GameObject:
   m_ObjectHideFlags: 0
@@ -2684,8 +2700,9 @@ GameObject:
   - component: {fileID: 4744848210302879765}
   - component: {fileID: 4744848210302879755}
   - component: {fileID: 4744848210302879764}
+  - component: {fileID: 1815695082}
   m_Layer: 5
-  m_Name: Button 5
+  m_Name: Parede
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2749,6 +2766,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1815695082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4744848210302879766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 756d9f75a87c7c940b4e50313f12a05f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityType: 0
+  scaleX: 0
+  scaleY: 0
 --- !u!1 &4744848210393165269
 GameObject:
   m_ObjectHideFlags: 0
@@ -2760,8 +2792,9 @@ GameObject:
   - component: {fileID: 4744848210393165268}
   - component: {fileID: 4744848210393165258}
   - component: {fileID: 4744848210393165259}
+  - component: {fileID: 2044765373}
   m_Layer: 5
-  m_Name: Button 2
+  m_Name: Gancho
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2825,6 +2858,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2044765373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4744848210393165269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1543e6e28606c7a449154d5538dfa075, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityType: 0
+  scaleX: 0
+  scaleY: 0
 --- !u!1 &4744848210469109161
 GameObject:
   m_ObjectHideFlags: 0
@@ -2970,8 +3018,9 @@ GameObject:
   - component: {fileID: 4744848210489520801}
   - component: {fileID: 4744848210489520807}
   - component: {fileID: 4744848210489520800}
+  - component: {fileID: 1938118600}
   m_Layer: 5
-  m_Name: Button 4
+  m_Name: "Canh\xE3o"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3035,6 +3084,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1938118600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4744848210489520802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bb62f48d9937c64fb1c5818f592c892, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityType: 0
+  scaleX: 0
+  scaleY: 0
 --- !u!1 &4744848210517592742
 GameObject:
   m_ObjectHideFlags: 0
@@ -3282,8 +3346,9 @@ GameObject:
   - component: {fileID: 4744848210616069178}
   - component: {fileID: 4744848210616069176}
   - component: {fileID: 4744848210616069177}
+  - component: {fileID: 55427108}
   m_Layer: 5
-  m_Name: Button 3
+  m_Name: Escada
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3347,6 +3412,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &55427108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4744848210616069179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20a4e5437266d0044bf99104089f0d70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityType: 0
+  scaleX: 0
+  scaleY: 0
 --- !u!1 &4744848210628606076
 GameObject:
   m_ObjectHideFlags: 0
@@ -3855,8 +3935,9 @@ GameObject:
   - component: {fileID: 4744848210919517371}
   - component: {fileID: 4744848210919517369}
   - component: {fileID: 4744848210919517370}
+  - component: {fileID: 2010583677}
   m_Layer: 5
-  m_Name: Button 6
+  m_Name: Barco
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3920,3 +4001,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2010583677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4744848210919517508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34c11bc76d7637e46b5b616aa8de9f75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityType: 0
+  scaleX: 0
+  scaleY: 0
