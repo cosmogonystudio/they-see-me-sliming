@@ -5,23 +5,23 @@ using UnityEngine;
 public class MapPiece : MonoBehaviour
 {
     private MapManager map;
-    private Transform spawnPoint;
+    private Transform endPoint;
 
     private void Awake()
     {
         map = FindObjectOfType<MapManager>();
-        spawnPoint = transform.Find("SpawnPoint");
+        endPoint = transform.Find("EndPoint");
     }
 
     void Start()
     {
         if(map.currentSize < map.mapSize)
         {
-            map.SpawnNextPiece(spawnPoint);
+            map.SpawnRoom(endPoint);
             map.currentSize++;
         } else if (map.currentSize == map.mapSize)
         {
-            map.SpawnFinalRoom(spawnPoint);
+            map.SpawnFinalRoom(endPoint);
         }
     }
 }
