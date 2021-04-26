@@ -1,41 +1,50 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Hotbar : MonoBehaviour
 {
-    private AbilitySwap abilitySwap;
 
-    private void Update()
+    void Update()
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            abilitySwap.SetAbilityType(AbilitySwap.AbilityType.Bridge);
+            // coloca um hightlight
+            Debug.Log("AbilityType.Bridge");
+            GameManager.GetInstance().SetAbilityType(AbilitySwap.AbilityType.Bridge);
         }
-
+        else
         if (Input.GetKeyDown(KeyCode.W))
         {
-            abilitySwap.SetAbilityType(AbilitySwap.AbilityType.Hook);
+            // coloca um hightlight
+            Debug.Log("AbilityType.Hook");
+            GameManager.GetInstance().SetAbilityType(AbilitySwap.AbilityType.Hook);
         }
-
+        else
         if (Input.GetKeyDown(KeyCode.E))
         {
-            abilitySwap.SetAbilityType(AbilitySwap.AbilityType.Cannon);
+            // coloca um hightlight
+            Debug.Log("AbilityType.Cannon");
+            GameManager.GetInstance().SetAbilityType(AbilitySwap.AbilityType.Cannon);
         }
-
+        else
         if (Input.GetKeyDown(KeyCode.A))
         {
-            abilitySwap.SetAbilityType(AbilitySwap.AbilityType.Boat);
+            // coloca um hightlight
+            Debug.Log("AbilityType.Boat");
+            GameManager.GetInstance().SetAbilityType(AbilitySwap.AbilityType.Boat);
         }
-
+        else
         if (Input.GetKeyDown(KeyCode.S))
         {
-            abilitySwap.SetAbilityType(AbilitySwap.AbilityType.Wall);
+            // coloca um hightlight
+            Debug.Log("AbilityType.Wall");
+            GameManager.GetInstance().SetAbilityType(AbilitySwap.AbilityType.Wall);
         }
-
+        else
         if (Input.GetKeyDown(KeyCode.D))
         {
-            abilitySwap.SetAbilityType(AbilitySwap.AbilityType.Horn);
+            // coloca um hightlight
+            Debug.Log("AbilityType.Horn");
+            GameManager.GetInstance().SetAbilityType(AbilitySwap.AbilityType.Horn);
         }
     }
 

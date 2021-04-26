@@ -80,7 +80,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.1572616, y: 2.15625}
+  m_Size: {x: 2.8763487, y: 2.875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -123,7 +123,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 2.8763487, y: 2.875}
-    newSize: {x: 2.1572616, y: 2.15625}
+    newSize: {x: 2.8763487, y: 2.875}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -165,3 +165,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
+  spriteDefault: {fileID: -3621471453987803102, guid: 763fda0784756034781e5e85be7ef3cf, type: 3}
+  spriteFall: {fileID: 8358847539892940752, guid: 763fda0784756034781e5e85be7ef3cf, type: 3}
+  spriteBridge: {fileID: 21300000, guid: de754daf0605c9348bc4de48c03f3ec8, type: 3}
+  spriteHook: {fileID: 21300000, guid: b6653b2374e6d594a82b3b531f28a9d9, type: 3}
+  spriteCannon: {fileID: 21300000, guid: 0f1141325ca56b34188a8f98415dd574, type: 3}
+  spriteBoat: {fileID: 21300000, guid: d5e13f00b0589b24ab8b3babfa9aa09e, type: 3}
+  spriteWall: {fileID: 21300000, guid: f8ca615f31fc2314395e236d73afeaee, type: 3}

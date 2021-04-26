@@ -1,104 +1,151 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AbilitySwap : MonoBehaviour {
+public class AbilitySwap : MonoBehaviour
+{
 
     public enum AbilityType
     {
-        Horn, // Apito
-        Wall,
+        None,
         Bridge,
         Hook,
         Cannon,
-        Boat
+        Boat,
+        Wall,
+        Horn
     }
+
+    [SerializeField]
+    private LayerMask defaultLayer;
+
+    [SerializeField]
+    private float pauseSeconds;
+
+    private WaitForSeconds pauseWaitForSeconds;
+
+    private AbilityType currentAbilityType = AbilityType.None;
+    private Slime currentSlime;
+    private List<Slime> currentAbleSlimes;
+    private bool currentUsing = false;
 
     public void SetAbilityType(AbilityType abilityType)
     {
-        switch (abilityType) {
-            default:
+        currentAbilityType = abilityType;
+    }
+
+    public void UseAbility(Slime slime, List<Slime> ableSlimes)
+    {
+        if (currentUsing == true || currentAbilityType == AbilityType.None || ableSlimes.Contains(slime) == false)
+        {
+            return;
+        }
+
+        currentUsing = true;
+
+        currentSlime = slime;
+        currentAbleSlimes = ableSlimes;
+
+        currentAbleSlimes.Remove(currentSlime);
+
+        slime.Use(currentAbilityType);
+    }
+
+    public void OnAbilityUse()
+    {
+        if (currentUsing == false)
+        {
+            return;
+        }
+
+        switch (currentAbilityType)
+        {
             case AbilityType.Bridge:
+                UseBridge();
                 break;
             case AbilityType.Hook:
+                UseHook();
                 break;
             case AbilityType.Cannon:
+                UseCannon();
                 break;
             case AbilityType.Boat:
+                UseBoat();
                 break;
             case AbilityType.Wall:
+                UseWall();
                 break;
             case AbilityType.Horn:
+                UseHorn();
+                break;
+            default:
                 break;
         }
+
+        currentUsing = false;
     }
-}
 
-public interface IAbility
-{
-    void useAbility(Vector2 position);
-}
-
-public class Bridge : MonoBehaviour, IAbility
-{
-    public GameObject bridge;
-    public void useAbility(Vector2 position)
+    void Awake()
     {
-        Instantiate(bridge, position, Quaternion.identity);
+        pauseWaitForSeconds = new WaitForSeconds(pauseSeconds);
     }
-}
 
-public class Hook : MonoBehaviour, IAbility
-{
-    public GameObject hook;
-    public void useAbility(Vector2 position)
+    IEnumerator OnHorn(Slime slime, List<Slime> ableSlimes)
     {
-        Instantiate(hook, position, Quaternion.identity);
-    }
-}
+        yield return pauseWaitForSeconds;
 
-public class Cannon : MonoBehaviour, IAbility
-{
-    public GameObject cannon;
-    public void useAbility(Vector2 position)
+        slime.Die(false);
+
+        ableSlimes.ForEach(slime => slime.KeepWalking());
+
+        yield break;
+    }
+
+    private void UseBridge()
     {
-        Instantiate(cannon, position, Quaternion.identity);
+        currentSlime.Crafted(AbilityType.Bridge);
 
-        // Destroi
-        // Constroi um cannon
-        // Outro
+        // TODO!
     }
-}
 
-public class Boat : MonoBehaviour, IAbility
-{
-    public GameObject boat;
-    public void useAbility(Vector2 position)
+    private void UseHook()
     {
-        Instantiate(boat, position, Quaternion.identity);
+        currentSlime.Crafted(AbilityType.Hook);
 
-        // Clica no bote
-        // Clica no slime - equipar bote
-        // Morre na água
-        // Espera a galera subir
-
-        // Amortece a queda
+        // TODO!
     }
-}
 
-public class Wall : MonoBehaviour, IAbility
-{
-    public GameObject wall;
-    public void useAbility(Vector2 position)
+    private void UseCannon()
     {
-        Instantiate(wall, position, Quaternion.identity);
-    }
-}
+        currentSlime.Crafted(AbilityType.Cannon);
 
-public class Horn : MonoBehaviour, IAbility
-{
-    public void useAbility(Vector2 position)
-    {
+        // TODO!
     }
+    private void UseBoat()
+    {
+        currentSlime.Crafted(AbilityType.Boat);
+
+        // TODO!
+    }
+
+    private void UseWall()
+    {
+        currentSlime.Crafted(AbilityType.Wall, false);
+
+        GameObject slimeGameObject = currentSlime.gameObject;
+
+        slimeGameObject.tag = "Untagged";
+        slimeGameObject.layer = defaultLayer;
+        slimeGameObject.GetComponent<Collider2D>().isTrigger = true;
+        slimeGameObject.GetComponent<Slime>().enabled = false;
+        slimeGameObject.AddComponent<Block>();
+    }
+
+    private void UseHorn()
+    {
+        currentAbleSlimes.ForEach(slime => slime.Pause());
+
+        StartCoroutine(OnHorn(currentSlime, currentAbleSlimes));
+    }
+
 }
