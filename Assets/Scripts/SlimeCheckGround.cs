@@ -28,7 +28,7 @@ public class SlimeCheckGround : MonoBehaviour
 
         if (slime.GetSlimeStatus() == Slime.SlimeStatus.Default)
         {
-            Debug.Log("called");
+            //Debug.Log("called");
             m_rigidbody2D.MovePosition(m_rigidbody2D.position + slime.direction * slime.moveSpeed * Time.fixedDeltaTime);
         }
 

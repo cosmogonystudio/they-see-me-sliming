@@ -18,13 +18,10 @@ public class AbilitySwap : MonoBehaviour
 
     [SerializeField]
     private LayerMask defaultLayer;
-
     [SerializeField]
     private float pauseSeconds;
-
     private WaitForSeconds pauseWaitForSeconds;
-
-    private AbilityType currentAbilityType = AbilityType.None;
+    public static AbilityType currentAbilityType = AbilityType.None;
     private Slime currentSlime;
     private List<Slime> currentAbleSlimes;
     private bool currentUsing = false;
@@ -136,9 +133,12 @@ public class AbilitySwap : MonoBehaviour
 
         slimeGameObject.tag = "Untagged";
         slimeGameObject.layer = defaultLayer;
-        slimeGameObject.GetComponent<Collider2D>().isTrigger = true;
+        slimeGameObject.GetComponent<CapsuleCollider2D>().isTrigger = true;
         slimeGameObject.GetComponent<Slime>().enabled = false;
+        slimeGameObject.GetComponent<SlimeCheckGround>().enabled = false;
         slimeGameObject.AddComponent<Block>();
+
+        Debug.Log("wall call");
     }
 
     private void UseHorn()

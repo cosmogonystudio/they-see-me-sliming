@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
 
-    [SerializeField]
-    private GameObject[] levels;
+   // [SerializeField]
+    //private GameObject[] levels;
 
     [SerializeField]
     private GameObject deeperMessage;
@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
 
     private WaitForSeconds deepWaitForSeconds;
 
-    private SlimeSpawner currentSpawner;
+    [SerializeField] private SlimeSpawner currentSpawner;
 
     private int levelIndex = 0;
 
@@ -62,10 +62,10 @@ public class GameManager : MonoBehaviour
             switch (slimeStatus)
             {
                 case Slime.SlimeStatus.Dead:
-                    StartCoroutine(AndGoDeeper());
+                    //StartCoroutine(AndGoDeeper());
                     break;
                 case Slime.SlimeStatus.Deeper:
-                    StartCoroutine(GoDeeper());
+                    //StartCoroutine(GoDeeper());
                     break;
                 default:
                     break;
@@ -94,10 +94,10 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
 
-            for (int i = 0; i < levels.Length; i++)
+            /*for (int i = 0; i < levels.Length; i++)
             {
                 levels[i].SetActive(false);
-            }
+            }*/
 
             deepWaitForSeconds = new WaitForSeconds(deepTextSeconds);
         }
@@ -109,10 +109,10 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        SetCurrentSpawner();
+        //SetCurrentSpawner();
     }
 
-    IEnumerator GoDeeper()
+    /*IEnumerator GoDeeper()
     {
         deeperMessage.SetActive(true);
 
@@ -145,8 +145,8 @@ public class GameManager : MonoBehaviour
         slimesDeeperCount = 0;
         slimesUsedCount = 0;
 
-        deeperMessage.SetActive(false);
-        andDeeperMessage.SetActive(false);
+        //deeperMessage.SetActive(false);
+        //andDeeperMessage.SetActive(false);
 
         levels[levelIndex].SetActive(true);
 
@@ -161,6 +161,6 @@ public class GameManager : MonoBehaviour
         {
             SetCurrentSpawner();
         }
-    }
+    }*/
     
 }

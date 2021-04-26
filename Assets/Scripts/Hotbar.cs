@@ -5,7 +5,7 @@ public class Hotbar : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Q))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             // coloca um hightlight
             Debug.Log("AbilityType.Bridge");
@@ -19,14 +19,14 @@ public class Hotbar : MonoBehaviour
             GameManager.GetInstance().SetAbilityType(AbilitySwap.AbilityType.Hook);
         }
         else
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.A))
         {
             // coloca um hightlight
             Debug.Log("AbilityType.Cannon");
             GameManager.GetInstance().SetAbilityType(AbilitySwap.AbilityType.Cannon);
         }
         else
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.D))
         {
             // coloca um hightlight
             Debug.Log("AbilityType.Boat");
@@ -40,7 +40,7 @@ public class Hotbar : MonoBehaviour
             GameManager.GetInstance().SetAbilityType(AbilitySwap.AbilityType.Wall);
         }
         else
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             // coloca um hightlight
             Debug.Log("AbilityType.Horn");

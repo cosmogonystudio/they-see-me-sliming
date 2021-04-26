@@ -15,8 +15,7 @@ public class Slime : MonoBehaviour
         Deeper
     }
 
-    [SerializeField]
-    private float moveSpeed;
+    public float moveSpeed;
 
     [SerializeField]
     private Sprite spriteDefault;
@@ -39,7 +38,7 @@ public class Slime : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
-    private Vector2 direction = Vector2.right;
+    [HideInInspector] public Vector2 direction = Vector2.right;
 
     private SlimeStatus slimeStatus;
 
@@ -167,7 +166,7 @@ public class Slime : MonoBehaviour
         animator.speed = 0f;
     }
 
-    void FixedUpdate()
+    /*void FixedUpdate()
     {
         if (slimeStatus == SlimeStatus.Default)
         {
@@ -190,7 +189,7 @@ public class Slime : MonoBehaviour
         {
             Fall();
         }
-    }
+    }*/
 
     private void SlimeIt()
     {

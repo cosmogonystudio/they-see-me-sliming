@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 5407223556578535494}
   - component: {fileID: 5407223556578535493}
   - component: {fileID: 5407223556578535495}
+  - component: {fileID: 1902832380}
+  - component: {fileID: 1902832373}
   m_Layer: 6
   m_Name: Slime
   m_TagString: Slime
@@ -30,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 5407223556578535498}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -112,7 +114,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5407223556578535498}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -146,7 +148,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 20
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -164,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c224380839b328e448bbeabb5ffc8d8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4
+  moveSpeed: 3
   spriteDefault: {fileID: -3621471453987803102, guid: 763fda0784756034781e5e85be7ef3cf, type: 3}
   spriteFall: {fileID: 8358847539892940752, guid: 763fda0784756034781e5e85be7ef3cf, type: 3}
   spriteBridge: {fileID: 21300000, guid: de754daf0605c9348bc4de48c03f3ec8, type: 3}
@@ -172,3 +174,36 @@ MonoBehaviour:
   spriteCannon: {fileID: 21300000, guid: 0f1141325ca56b34188a8f98415dd574, type: 3}
   spriteBoat: {fileID: 21300000, guid: d5e13f00b0589b24ab8b3babfa9aa09e, type: 3}
   spriteWall: {fileID: 21300000, guid: f8ca615f31fc2314395e236d73afeaee, type: 3}
+  direction: {x: 1, y: 0}
+--- !u!70 &1902832380
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5407223556578535498}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.085510015, y: 0}
+  m_Size: {x: 2.2492766, y: 2.8763487}
+  m_Direction: 0
+--- !u!114 &1902832373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5407223556578535498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3b3db910440e004683fc9cecbcf07b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boxReach: 0.05
+  layer:
+    serializedVersion: 2
+    m_Bits: 128
