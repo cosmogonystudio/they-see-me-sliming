@@ -7,12 +7,8 @@ public abstract class SlimeTrigger : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("alegoria");
-
         if (collision.gameObject.CompareTag(slimeTag))
         {
-            Debug.Log("margarida");
-
             OnSlime(collision.gameObject.GetComponent<Slime>());
         }
     }

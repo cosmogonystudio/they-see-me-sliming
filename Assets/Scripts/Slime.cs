@@ -32,6 +32,8 @@ public class Slime : MonoBehaviour
     private Sprite spriteBoat;
     [SerializeField]
     private Sprite spriteWall;
+    [SerializeField]
+    private Sprite spriteScared;
 
     private Rigidbody2D m_rigidbody2D;
 
@@ -43,6 +45,10 @@ public class Slime : MonoBehaviour
 
     private SlimeStatus slimeStatus;
 
+    private float currentFallTime = 0f;
+
+    private float maxFallTime = 1f;
+
     private const string floorTag = "Floor";
 
     public SlimeStatus GetSlimeStatus()
@@ -52,18 +58,24 @@ public class Slime : MonoBehaviour
 
     public void KeepWalking()
     {
+        m_rigidbody2D.WakeUp();
+
         spriteRenderer.sprite = spriteDefault;
 
-        slimeStatus = SlimeStatus.Default;
-
+        animator.enabled = true;
         animator.speed = 1f;
-
         animator.SetTrigger(SlimeAnimationBehaviour.animationWalking);
+
+        if (isActiveAndEnabled == true)
+        {
+            StartCoroutine(OnWalk());
+        }
     }
 
     public void Fall()
     {
         animator.speed = 0f;
+        animator.enabled = false;
 
         spriteRenderer.sprite = spriteFall;
 
@@ -72,9 +84,10 @@ public class Slime : MonoBehaviour
 
     public void Pause()
     {
-        slimeStatus = SlimeStatus.Paused;
-
-        animator.SetTrigger(SlimeAnimationBehaviour.animationScared);
+        if (isActiveAndEnabled == true)
+        {
+            StartCoroutine(OnPause());
+        }
     }
 
     public void Crafted(AbilitySwap.AbilityType abilityType, bool sleepRigidbody = true)
@@ -117,24 +130,24 @@ public class Slime : MonoBehaviour
         if (abilityType == AbilitySwap.AbilityType.Horn)
         {
             animator.SetTrigger(SlimeAnimationBehaviour.animationHorn);
-        } else
+        }
+        else
         {
             animator.SetTrigger(SlimeAnimationBehaviour.animationCraft);
-        }
 
-        SlimeIt();
+            SlimeIt();
+        }
     }
 
-    public void Die(bool slimeIt = true)
+    public void Die()
     {
         slimeStatus = SlimeStatus.Dead;
 
+        animator.enabled = true;
+        animator.speed = 1f;
         animator.SetTrigger(SlimeAnimationBehaviour.animationDie);
 
-        if (slimeIt)
-        {
-            SlimeIt();
-        }
+        SlimeIt();
     }
 
     public void DeeperAndDeeper()
@@ -164,12 +177,16 @@ public class Slime : MonoBehaviour
 
     void Start()
     {
-        animator.speed = 0f;
+        Fall();
     }
 
     void FixedUpdate()
     {
-        if (slimeStatus == SlimeStatus.Default)
+        if (slimeStatus == SlimeStatus.InAir)
+        {
+            currentFallTime += Time.fixedDeltaTime;
+        }
+        else if (slimeStatus == SlimeStatus.Default)
         {
             m_rigidbody2D.MovePosition(m_rigidbody2D.position + direction * moveSpeed * Time.fixedDeltaTime);
         }
@@ -177,19 +194,49 @@ public class Slime : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag(floorTag) && slimeStatus != SlimeStatus.Used)
+        if (collision.gameObject.CompareTag(floorTag) && slimeStatus == SlimeStatus.InAir)
         {
-            KeepWalking();
+            if (currentFallTime >= maxFallTime)
+            {
+                Die();
+            }
+            else
+            {
+                currentFallTime = 0;
+
+                KeepWalking();
+            }
         }
 
     }
 
     void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag(floorTag) && slimeStatus != SlimeStatus.Used)
+        if (collision.gameObject.CompareTag(floorTag) && slimeStatus == SlimeStatus.Default)
         {
             Fall();
         }
+    }
+
+    IEnumerator OnWalk()
+    {
+        yield return new WaitForSeconds(0.25f);
+
+        slimeStatus = SlimeStatus.Default;
+    }
+
+    IEnumerator OnPause()
+    {
+        yield return new WaitForFixedUpdate();
+
+        m_rigidbody2D.Sleep();
+
+        slimeStatus = SlimeStatus.Paused;
+
+        spriteRenderer.sprite = spriteScared;
+
+        animator.speed = 1f;
+        animator.SetTrigger(SlimeAnimationBehaviour.animationScared);
     }
 
     private void SlimeIt()

@@ -3,49 +3,66 @@ using UnityEngine;
 public class Hotbar : MonoBehaviour
 {
 
+    [SerializeField]
+    private GameObject[] buttons;
+
+    private void Start()
+    {
+        Reset();
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            // coloca um hightlight
-            Debug.Log("AbilityType.Bridge");
+            Highlight(0);
             GameManager.GetInstance().SetAbilityType(AbilitySwap.AbilityType.Bridge);
         }
         else
         if (Input.GetKeyDown(KeyCode.W))
         {
-            // coloca um hightlight
-            Debug.Log("AbilityType.Hook");
+            Highlight(1);
             GameManager.GetInstance().SetAbilityType(AbilitySwap.AbilityType.Hook);
         }
         else
         if (Input.GetKeyDown(KeyCode.E))
         {
-            // coloca um hightlight
-            Debug.Log("AbilityType.Cannon");
+            Highlight(2);
             GameManager.GetInstance().SetAbilityType(AbilitySwap.AbilityType.Cannon);
         }
         else
         if (Input.GetKeyDown(KeyCode.A))
         {
-            // coloca um hightlight
-            Debug.Log("AbilityType.Boat");
+            Highlight(3);
             GameManager.GetInstance().SetAbilityType(AbilitySwap.AbilityType.Boat);
         }
         else
         if (Input.GetKeyDown(KeyCode.S))
         {
-            // coloca um hightlight
-            Debug.Log("AbilityType.Wall");
+            Highlight(4);
             GameManager.GetInstance().SetAbilityType(AbilitySwap.AbilityType.Wall);
         }
         else
         if (Input.GetKeyDown(KeyCode.D))
         {
-            // coloca um hightlight
-            Debug.Log("AbilityType.Horn");
+            Highlight(5);
             GameManager.GetInstance().SetAbilityType(AbilitySwap.AbilityType.Horn);
         }
+    }
+
+    private void Reset()
+    {
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            buttons[i].SetActive(false);
+        }
+    }
+
+    private void Highlight(int index)
+    {
+        Reset();
+
+        buttons[index].SetActive(true);
     }
 
 }

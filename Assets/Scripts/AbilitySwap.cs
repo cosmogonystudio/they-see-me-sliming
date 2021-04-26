@@ -22,11 +22,8 @@ public class AbilitySwap : MonoBehaviour
     [SerializeField]
     private float pauseSeconds;
 
-    private WaitForSeconds pauseWaitForSeconds;
-
     private AbilityType currentAbilityType = AbilityType.None;
     private Slime currentSlime;
-    private List<Slime> currentAbleSlimes;
     private bool currentUsing = false;
 
     public void SetAbilityType(AbilityType abilityType)
@@ -34,9 +31,9 @@ public class AbilitySwap : MonoBehaviour
         currentAbilityType = abilityType;
     }
 
-    public void UseAbility(Slime slime, List<Slime> ableSlimes)
+    public void UseAbility(Slime slime)
     {
-        if (currentUsing == true || currentAbilityType == AbilityType.None || ableSlimes.Contains(slime) == false)
+        if (currentUsing == true || currentAbilityType == AbilityType.None)
         {
             return;
         }
@@ -44,19 +41,18 @@ public class AbilitySwap : MonoBehaviour
         currentUsing = true;
 
         currentSlime = slime;
-        currentAbleSlimes = ableSlimes;
-
-        currentAbleSlimes.Remove(currentSlime);
 
         slime.Use(currentAbilityType);
     }
 
-    public void OnAbilityUse()
+    public void OnAbilityUse(List<Slime> ableSlimes)
     {
         if (currentUsing == false)
         {
             return;
         }
+
+        ableSlimes.Remove(currentSlime);
 
         switch (currentAbilityType)
         {
@@ -76,7 +72,7 @@ public class AbilitySwap : MonoBehaviour
                 UseWall();
                 break;
             case AbilityType.Horn:
-                UseHorn();
+                UseHorn(ableSlimes);
                 break;
             default:
                 break;
@@ -85,20 +81,13 @@ public class AbilitySwap : MonoBehaviour
         currentUsing = false;
     }
 
-    void Awake()
-    {
-        pauseWaitForSeconds = new WaitForSeconds(pauseSeconds);
-    }
-
     IEnumerator OnHorn(Slime slime, List<Slime> ableSlimes)
     {
-        yield return pauseWaitForSeconds;
+        yield return new WaitForSeconds(pauseSeconds);
 
-        slime.Die(false);
+        slime.KeepWalking();
 
         ableSlimes.ForEach(slime => slime.KeepWalking());
-
-        yield break;
     }
 
     private void UseBridge()
@@ -141,11 +130,11 @@ public class AbilitySwap : MonoBehaviour
         slimeGameObject.AddComponent<Block>();
     }
 
-    private void UseHorn()
+    private void UseHorn(List<Slime> ableSlimes)
     {
-        currentAbleSlimes.ForEach(slime => slime.Pause());
+        ableSlimes.ForEach(slime => slime.Pause());
 
-        StartCoroutine(OnHorn(currentSlime, currentAbleSlimes));
+        StartCoroutine(OnHorn(currentSlime, ableSlimes));
     }
 
 }

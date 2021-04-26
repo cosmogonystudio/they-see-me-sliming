@@ -172,3 +172,4 @@ MonoBehaviour:
   spriteCannon: {fileID: 21300000, guid: 0f1141325ca56b34188a8f98415dd574, type: 3}
   spriteBoat: {fileID: 21300000, guid: d5e13f00b0589b24ab8b3babfa9aa09e, type: 3}
   spriteWall: {fileID: 21300000, guid: f8ca615f31fc2314395e236d73afeaee, type: 3}
+  spriteScared: {fileID: 6875453075300963811, guid: 431a2ab26123bb641b2fae7d0b7b4e12, type: 3}

@@ -20,8 +20,6 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private AbilitySwap abilitySwap;
 
-    private WaitForSeconds deepWaitForSeconds;
-
     private SlimeSpawner currentSpawner;
 
     private int levelIndex = 0;
@@ -80,12 +78,12 @@ public class GameManager : MonoBehaviour
 
     public void UseAbility(Slime slime)
     {
-        abilitySwap.UseAbility(slime, currentSpawner.GetAbleSlimes());
+        abilitySwap.UseAbility(slime);
     }
 
     public void OnAbilityUse()
     {
-        abilitySwap.OnAbilityUse();
+        abilitySwap.OnAbilityUse(currentSpawner.GetAbleSlimes());
     }
 
     void Awake()
@@ -98,8 +96,6 @@ public class GameManager : MonoBehaviour
             {
                 levels[i].SetActive(false);
             }
-
-            deepWaitForSeconds = new WaitForSeconds(deepTextSeconds);
         }
         else if (instance != this)
         {
@@ -116,26 +112,22 @@ public class GameManager : MonoBehaviour
     {
         deeperMessage.SetActive(true);
 
-        yield return deepWaitForSeconds;
+        yield return new WaitForSeconds(deepTextSeconds);
 
         deeperMessage.SetActive(false);
 
         NextLevel();
-
-        yield break;
     }
 
     IEnumerator AndGoDeeper()
     {
         andDeeperMessage.SetActive(true);
 
-        yield return deepWaitForSeconds;
+        yield return new WaitForSeconds(deepTextSeconds);
 
         andDeeperMessage.SetActive(false);
 
         SceneManager.LoadScene("StartScene");
-
-        yield break;
     }
 
     private void SetCurrentSpawner()
