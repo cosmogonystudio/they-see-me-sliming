@@ -19,6 +19,9 @@ public class Slime : MonoBehaviour
     private float moveSpeed;
 
     [SerializeField]
+    private float maxFallTime;
+
+    [SerializeField]
     private Sprite spriteDefault;
     [SerializeField]
     private Sprite spriteFall;
@@ -46,8 +49,6 @@ public class Slime : MonoBehaviour
     private SlimeStatus slimeStatus;
 
     private float currentFallTime = 0f;
-
-    private float maxFallTime = 1f;
 
     private const string floorTag = "Floor";
 
@@ -168,6 +169,8 @@ public class Slime : MonoBehaviour
 
     void Awake()
     {
+        currentFallTime = 0f;
+
         m_rigidbody2D = GetComponent<Rigidbody2D>();
 
         animator = GetComponent<Animator>();
