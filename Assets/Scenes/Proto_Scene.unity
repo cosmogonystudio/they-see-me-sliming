@@ -218,18 +218,6 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5407223556578535492, guid: bc7bc568b1778fa41a7f03841b0d7070, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.2218273
-      objectReference: {fileID: 0}
-    - target: {fileID: 5407223556578535492, guid: bc7bc568b1778fa41a7f03841b0d7070, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.2218273
-      objectReference: {fileID: 0}
-    - target: {fileID: 5407223556578535492, guid: bc7bc568b1778fa41a7f03841b0d7070, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.2218273
-      objectReference: {fileID: 0}
-    - target: {fileID: 5407223556578535492, guid: bc7bc568b1778fa41a7f03841b0d7070, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11.53
       objectReference: {fileID: 0}
@@ -269,29 +257,9 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5407223556578535493, guid: bc7bc568b1778fa41a7f03841b0d7070, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: f5b3325011a4d114cb810933fe80c44e, type: 2}
-    - target: {fileID: 5407223556578535493, guid: bc7bc568b1778fa41a7f03841b0d7070, type: 3}
-      propertyPath: m_GravityScale
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 5407223556578535495, guid: bc7bc568b1778fa41a7f03841b0d7070, type: 3}
-      propertyPath: boxReach
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 5407223556578535495, guid: bc7bc568b1778fa41a7f03841b0d7070, type: 3}
-      propertyPath: layer.m_Bits
-      value: 128
-      objectReference: {fileID: 0}
     - target: {fileID: 5407223556578535498, guid: bc7bc568b1778fa41a7f03841b0d7070, type: 3}
       propertyPath: m_Name
       value: Slime
-      objectReference: {fileID: 0}
-    - target: {fileID: 5407223556578535498, guid: bc7bc568b1778fa41a7f03841b0d7070, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc7bc568b1778fa41a7f03841b0d7070, type: 3}

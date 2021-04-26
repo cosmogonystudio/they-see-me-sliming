@@ -93,7 +93,7 @@ public class Slime : MonoBehaviour
 
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        coll = GetComponent<BoxCollider2D>();
+        coll = GetComponent<CapsuleCollider2D>();
     }
 
     void Start()
@@ -113,6 +113,7 @@ public class Slime : MonoBehaviour
             m_rigidbody2D.MovePosition(m_rigidbody2D.position + direction * moveSpeed * Time.fixedDeltaTime);
         }
 
+        Debug.Log(m_rigidbody2D.velocity);
     }
 
     /*void OnCollisionEnter2D(Collision2D collision)

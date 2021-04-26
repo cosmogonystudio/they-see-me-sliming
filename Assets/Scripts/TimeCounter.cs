@@ -5,8 +5,8 @@ using TMPro;
 
 public class TimeCounter : MonoBehaviour
 {
-    public float seconds;
-    public int minutes;
+    static float seconds;
+    static int minutes;
     [SerializeField] TextMeshProUGUI timeText;
 
 
