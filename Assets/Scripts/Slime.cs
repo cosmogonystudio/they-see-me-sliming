@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class Slime : MonoBehaviour
 {
-
     public enum SlimeStatus
     {
         Default,
@@ -13,8 +12,8 @@ public class Slime : MonoBehaviour
         Deeper
     }
 
-    [SerializeField]
-    private float moveSpeed;
+
+    public float moveSpeed;
 
     private Rigidbody2D m_rigidbody2D;
     private Collider2D coll;
@@ -22,7 +21,7 @@ public class Slime : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
-    private Vector2 direction = Vector2.right;
+    public Vector2 direction = Vector2.right;
 
     private SlimeStatus slimeStatus;
     [SerializeField] private LayerMask layer;
@@ -102,7 +101,7 @@ public class Slime : MonoBehaviour
         slimeStatus = SlimeStatus.InAir;
     }
 
-    void FixedUpdate()
+    /*void FixedUpdate()
     {
         m_rigidbody2D.velocity = Vector2.zero;
 
@@ -114,7 +113,7 @@ public class Slime : MonoBehaviour
         }
 
         Debug.Log(m_rigidbody2D.velocity);
-    }
+    }*/
 
     /*void OnCollisionEnter2D(Collision2D collision)
     {
@@ -132,7 +131,7 @@ public class Slime : MonoBehaviour
         }
     }*/
 
-    void CheckGround()
+    /*void CheckGround()
     {
         RaycastHit2D hit = Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, boxReach, layer);
         if(hit.collider != null)
@@ -144,7 +143,7 @@ public class Slime : MonoBehaviour
         }
 
         //Debug.Log(slimeStatus);
-    }
+    }*/
 
     private void SlimeIt()
     {

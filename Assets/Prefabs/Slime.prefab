@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5407223556578535493}
   - component: {fileID: 5407223556578535495}
   - component: {fileID: 1009470976}
+  - component: {fileID: -1550291559930522340}
   m_Layer: 6
   m_Name: Slime
   m_TagString: Slime
@@ -166,6 +167,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 2
+  direction: {x: 1, y: 0}
   layer:
     serializedVersion: 2
     m_Bits: 128
@@ -186,3 +188,19 @@ CapsuleCollider2D:
   m_Offset: {x: 0.114222765, y: -0.22172809}
   m_Size: {x: 2.1103787, y: 2.4328923}
   m_Direction: 0
+--- !u!114 &-1550291559930522340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5407223556578535498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3b3db910440e004683fc9cecbcf07b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boxReach: 0.05
+  layer:
+    serializedVersion: 2
+    m_Bits: 128
