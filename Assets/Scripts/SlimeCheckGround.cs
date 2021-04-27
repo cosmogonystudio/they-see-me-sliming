@@ -22,12 +22,12 @@ public class SlimeCheckGround : MonoBehaviour
     }
     void FixedUpdate()
     {
-        m_rigidbody2D.velocity = Vector2.zero;
 
         CheckGround();
 
         if (slime.GetSlimeStatus() == Slime.SlimeStatus.Default)
         {
+            //m_rigidbody2D.velocity = Vector2.zero;
             //Debug.Log("called");
             m_rigidbody2D.MovePosition(m_rigidbody2D.position + slime.direction * slime.moveSpeed * Time.fixedDeltaTime);
         }

@@ -23,9 +23,6 @@ public class GameManager : MonoBehaviour
     private WaitForSeconds deepWaitForSeconds;
 
     [SerializeField] private SlimeSpawner currentSpawner;
-
-    private int levelIndex = 0;
-
     private int slimesItCount;
     private int slimesUsedCount;
     private int slimesDeadCount;

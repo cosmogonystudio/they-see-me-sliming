@@ -577,6 +577,8 @@ MonoBehaviour:
   currentSize: 0
   rooms:
   - {fileID: 13799953920648097, guid: 180e16a429ce38840857d13187500650, type: 3}
+  - {fileID: 3260032466099861593, guid: 295013aa705f6e34a89c43649f55f18f, type: 3}
+  - {fileID: 5163138051554623984, guid: 3992d8c241fb6fc488d4b0e8d53a43f7, type: 3}
   finalRoom: {fileID: 7752320663054818079, guid: f2c11ef3f128f3643a52ec2936903aa6, type: 3}
   FirstRoom: {fileID: 170464122}
 --- !u!4 &1596446243
