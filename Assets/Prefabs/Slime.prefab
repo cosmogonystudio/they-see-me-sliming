@@ -12,8 +12,10 @@ GameObject:
   - component: {fileID: 5407223556578535499}
   - component: {fileID: -3794360121885972223}
   - component: {fileID: 5407223556578535494}
+  - component: {fileID: -486704059239705344}
   - component: {fileID: 5407223556578535493}
   - component: {fileID: 5407223556578535495}
+  - component: {fileID: 8117387991414111938}
   m_Layer: 6
   m_Name: Slime
   m_TagString: Slime
@@ -112,7 +114,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5407223556578535498}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -131,6 +133,35 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.5, y: 2.85}
   m_EdgeRadius: 0
+--- !u!60 &-486704059239705344
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5407223556578535498}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: b80e51df0d53ca74c86d8c1ddde9e10a, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.01}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.8763487, y: 2.875}
+    newSize: {x: 2.8763487, y: 2.875}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -1.671988, y: 0.058358423}
+      - {x: -2.75, y: -0.22}
+      - {x: 2.75, y: -0.22}
+      - {x: 2.1565511, y: 0.04344876}
 --- !u!50 &5407223556578535493
 Rigidbody2D:
   serializedVersion: 4
@@ -174,3 +205,19 @@ MonoBehaviour:
   spriteBoat: {fileID: 21300000, guid: d5e13f00b0589b24ab8b3babfa9aa09e, type: 3}
   spriteWall: {fileID: 21300000, guid: f8ca615f31fc2314395e236d73afeaee, type: 3}
   spriteScared: {fileID: 6875453075300963811, guid: 431a2ab26123bb641b2fae7d0b7b4e12, type: 3}
+--- !u!70 &8117387991414111938
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5407223556578535498}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 1.96, y: 2.74}
+  m_Direction: 0

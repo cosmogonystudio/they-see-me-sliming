@@ -15,6 +15,8 @@ public class Slime : MonoBehaviour
         Deeper
     }
 
+    public const string floorTag = "Floor";
+
     [SerializeField]
     private float moveSpeed;
 
@@ -50,7 +52,7 @@ public class Slime : MonoBehaviour
 
     private float currentFallTime = 0f;
 
-    private const string floorTag = "Floor";
+    private bool caralho = false;
 
     public SlimeStatus GetSlimeStatus()
     {
@@ -96,10 +98,6 @@ public class Slime : MonoBehaviour
         if (sleepRigidbody)
         {
             m_rigidbody2D.Sleep();
-        }
-        else
-        {
-            m_rigidbody2D.bodyType = RigidbodyType2D.Static;
         }
 
         switch (abilityType)
@@ -176,6 +174,8 @@ public class Slime : MonoBehaviour
         animator = GetComponent<Animator>();
 
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        caralho = false;
     }
 
     void Start()
@@ -197,6 +197,11 @@ public class Slime : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.layer == 7)
+        {
+            caralho = true;
+        }
+        
         if (collision.gameObject.CompareTag(floorTag) && slimeStatus == SlimeStatus.InAir)
         {
             if (currentFallTime >= maxFallTime)
@@ -205,19 +210,28 @@ public class Slime : MonoBehaviour
             }
             else
             {
-                currentFallTime = 0;
+                currentFallTime = 0f;
 
                 KeepWalking();
             }
         }
-
     }
 
     void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag(floorTag) && slimeStatus == SlimeStatus.Default)
         {
-            Fall();
+            if (caralho == false)
+            {
+                Fall();
+            }
+            else
+            if (collision.gameObject.layer == 7)
+            {
+                slimeStatus = SlimeStatus.InAir;
+
+                caralho = false;
+            }
         }
     }
 

@@ -48,6 +48,9 @@ MonoBehaviour:
   defaultLayer:
     serializedVersion: 2
     m_Bits: 1
+  bridgeLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
   pauseSeconds: 3
 --- !u!114 &7451666863663898821
 MonoBehaviour:

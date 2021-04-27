@@ -18,12 +18,14 @@ public class Hotbar : MonoBehaviour
             Highlight(0);
             GameManager.GetInstance().SetAbilityType(AbilitySwap.AbilityType.Bridge);
         }
+        /*
         else
         if (Input.GetKeyDown(KeyCode.W))
         {
             Highlight(1);
             GameManager.GetInstance().SetAbilityType(AbilitySwap.AbilityType.Hook);
         }
+        */
         else
         if (Input.GetKeyDown(KeyCode.E))
         {

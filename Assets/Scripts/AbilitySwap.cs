@@ -39,7 +39,6 @@ public class AbilitySwap : MonoBehaviour
         }
 
         currentUsing = true;
-
         currentSlime = slime;
 
         slime.Use(currentAbilityType);
@@ -87,14 +86,30 @@ public class AbilitySwap : MonoBehaviour
 
         slime.KeepWalking();
 
-        ableSlimes.ForEach(slime => slime.KeepWalking());
+        ableSlimes.ForEach(slime => {
+            if (slime.GetSlimeStatus() == Slime.SlimeStatus.InAir)
+            {
+                slime.Fall();
+            }
+            else
+            {
+                slime.KeepWalking();
+            }
+        });
     }
 
     private void UseBridge()
     {
-        currentSlime.Crafted(AbilityType.Bridge);
+        currentSlime.Crafted(AbilityType.Bridge, false);
 
-        // TODO!
+        GameObject slimeGameObject = currentSlime.gameObject;
+
+        slimeGameObject.tag = Slime.floorTag;
+        slimeGameObject.layer = 7;
+        slimeGameObject.GetComponent<CapsuleCollider2D>().enabled = false;
+        slimeGameObject.GetComponent<PolygonCollider2D>().enabled = true;
+        slimeGameObject.GetComponent<Rigidbody2D>().mass = 1000f;
+        slimeGameObject.GetComponent<Slime>().enabled = false;
     }
 
     private void UseHook()
@@ -114,7 +129,12 @@ public class AbilitySwap : MonoBehaviour
     {
         currentSlime.Crafted(AbilityType.Boat);
 
-        // TODO!
+        GameObject slimeGameObject = currentSlime.gameObject;
+
+        slimeGameObject.tag = "Boat";
+        slimeGameObject.layer = LayerMask.NameToLayer("Boat");
+        slimeGameObject.GetComponent<Collider2D>().isTrigger = false;
+        slimeGameObject.AddComponent<Boat>();
     }
 
     private void UseWall()
@@ -125,7 +145,9 @@ public class AbilitySwap : MonoBehaviour
 
         slimeGameObject.tag = "Untagged";
         slimeGameObject.layer = defaultLayer;
-        slimeGameObject.GetComponent<Collider2D>().isTrigger = true;
+        Collider2D slimeCollider = slimeGameObject.GetComponent<Collider2D>();
+        slimeCollider.isTrigger = true;
+        slimeCollider.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
         slimeGameObject.GetComponent<Slime>().enabled = false;
         slimeGameObject.AddComponent<Block>();
     }

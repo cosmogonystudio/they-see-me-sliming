@@ -923,6 +923,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7451666863663898820, guid: 162fb072818b6e44e93232ddbce5e053, type: 3}
+      propertyPath: bridgeLayer.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 7451666863663898820, guid: 162fb072818b6e44e93232ddbce5e053, type: 3}
+      propertyPath: bridgeLayerMask.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
     - target: {fileID: 7451666863663898822, guid: 162fb072818b6e44e93232ddbce5e053, type: 3}
       propertyPath: buttons.Array.data[0]
       value: 
@@ -1107,11 +1115,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2876967433754879350, guid: 6a6deece705e661409c38936eee0533d, type: 3}
       propertyPath: spawnRate
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2876967433754879350, guid: 6a6deece705e661409c38936eee0533d, type: 3}
       propertyPath: spawnNumber
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6972454187080806242, guid: 6a6deece705e661409c38936eee0533d, type: 3}
       propertyPath: spawnNumber
