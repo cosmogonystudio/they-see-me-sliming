@@ -15,40 +15,32 @@ public class Hotbar : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            Highlight(0);
-            GameManager.GetInstance().SetAbilityType(AbilitySwap.AbilityType.Bridge);
+            SetHotKey(AbilitySwap.AbilityType.Bridge);
         }
-        /*
         else
         if (Input.GetKeyDown(KeyCode.W))
         {
-            Highlight(1);
-            GameManager.GetInstance().SetAbilityType(AbilitySwap.AbilityType.Hook);
+            SetHotKey(AbilitySwap.AbilityType.Hook);
         }
-        */
         else
         if (Input.GetKeyDown(KeyCode.A))
         {
-            Highlight(2);
-            GameManager.GetInstance().SetAbilityType(AbilitySwap.AbilityType.Cannon);
+            SetHotKey(AbilitySwap.AbilityType.Cannon);
         }
         else
         if (Input.GetKeyDown(KeyCode.D))
         {
-            Highlight(3);
-            GameManager.GetInstance().SetAbilityType(AbilitySwap.AbilityType.Boat);
+            SetHotKey(AbilitySwap.AbilityType.Boat);
         }
         else
         if (Input.GetKeyDown(KeyCode.S))
         {
-            Highlight(4);
-            GameManager.GetInstance().SetAbilityType(AbilitySwap.AbilityType.Wall);
+            SetHotKey(AbilitySwap.AbilityType.Wall);
         }
         else
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            Highlight(5);
-            GameManager.GetInstance().SetAbilityType(AbilitySwap.AbilityType.Horn);
+            SetHotKey(AbilitySwap.AbilityType.Horn);
         }
     }
 
@@ -58,6 +50,13 @@ public class Hotbar : MonoBehaviour
         {
             buttons[i].SetActive(false);
         }
+    }
+
+    private void SetHotKey(AbilitySwap.AbilityType abilityType)
+    {
+        Highlight((int)abilityType);
+
+        GameManager.GetInstance().SetAbilityType(abilityType);
     }
 
     private void Highlight(int index)

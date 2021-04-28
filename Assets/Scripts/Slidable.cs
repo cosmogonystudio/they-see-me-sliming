@@ -1,21 +1,25 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Slidable : MonoBehaviour
 {
-    Collider2D coll;
-    [SerializeField] private PhysicsMaterial2D material;
+    
+    [SerializeField]
+    private PhysicsMaterial2D material;
 
-    private void Awake()
+    private Collider2D coll;
+
+    private int defaultLayer = LayerMask.NameToLayer("Default");
+
+    void Awake()
     {
         coll = GetComponent<Collider2D>();
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    void OnCollisionEnter2D(Collision2D other)
     {
-        gameObject.tag = "Untagged";
-        gameObject.layer = 0;
+        gameObject.layer = defaultLayer;
+
         coll.sharedMaterial = material;
     }
+
 }

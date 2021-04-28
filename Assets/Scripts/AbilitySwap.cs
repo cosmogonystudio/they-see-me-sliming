@@ -7,53 +7,62 @@ public class AbilitySwap : MonoBehaviour
 
     public enum AbilityType
     {
-        None,
         Bridge,
         Hook,
         Cannon,
         Boat,
         Wall,
-        Horn
+        Horn,
+
+        None
     }
 
-    [SerializeField]
-    private LayerMask defaultLayer;
+    public const string untaggedTag = "Untagged";
+
     [SerializeField]
     private float pauseSeconds;
-    private WaitForSeconds pauseWaitForSeconds;
-    public static AbilityType currentAbilityType = AbilityType.None;
-    private Slime currentSlime;
-    private List<Slime> currentAbleSlimes;
+
+    private AbilityType currentAbilityType = AbilityType.None;
+    private Slime currentSlime = null;
     private bool currentUsing = false;
+
+    private int defaultLayer = LayerMask.NameToLayer("Default");
+
+    public AbilityType GetCurrentAbilityType()
+    {
+        return currentAbilityType;
+    }
 
     public void SetAbilityType(AbilityType abilityType)
     {
         currentAbilityType = abilityType;
     }
 
-    public void UseAbility(Slime slime, List<Slime> ableSlimes)
+    public void UseAbility(Slime slime)
     {
-        if (currentUsing == true || currentAbilityType == AbilityType.None || ableSlimes.Contains(slime) == false)
+        if (currentUsing == true || 
+            (
+                currentAbilityType == AbilityType.None ||
+                currentAbilityType == AbilityType.Cannon
+            ))
         {
             return;
         }
 
         currentUsing = true;
-
         currentSlime = slime;
-        currentAbleSlimes = ableSlimes;
-
-        currentAbleSlimes.Remove(currentSlime);
 
         slime.Use(currentAbilityType);
     }
 
-    public void OnAbilityUse()
+    public void OnAbilityUse(List<Slime> ableSlimes)
     {
         if (currentUsing == false)
         {
             return;
         }
+
+        ableSlimes.Remove(currentSlime);
 
         switch (currentAbilityType)
         {
@@ -73,7 +82,7 @@ public class AbilitySwap : MonoBehaviour
                 UseWall();
                 break;
             case AbilityType.Horn:
-                UseHorn();
+                UseHorn(ableSlimes);
                 break;
             default:
                 break;
@@ -82,70 +91,80 @@ public class AbilitySwap : MonoBehaviour
         currentUsing = false;
     }
 
-    void Awake()
-    {
-        pauseWaitForSeconds = new WaitForSeconds(pauseSeconds);
-    }
-
     IEnumerator OnHorn(Slime slime, List<Slime> ableSlimes)
     {
-        yield return pauseWaitForSeconds;
+        yield return new WaitForSeconds(pauseSeconds);
 
-        slime.Die(false);
+        slime.KeepWalking();
 
-        ableSlimes.ForEach(slime => slime.KeepWalking());
-
-        yield break;
+        ableSlimes.ForEach(slime =>
+        {
+            if (slime.GetSlimeStatus() == Slime.SlimeStatus.InAir)
+            {
+                slime.Fall();
+            }
+            else
+            {
+                slime.KeepWalking();
+            }
+        });
     }
 
     private void UseBridge()
     {
         currentSlime.Crafted(AbilityType.Bridge);
 
-        // TODO!
+        Craft(currentSlime.gameObject);
+
+        // TODO
     }
 
     private void UseHook()
     {
+        currentSlime.GetComponent<Rigidbody2D>().Sleep();
+
         currentSlime.Crafted(AbilityType.Hook);
 
-        // TODO!
+        Debug.Log("UseHook()");
     }
 
     private void UseCannon()
     {
-        currentSlime.Crafted(AbilityType.Cannon);
-
-        // TODO!
+        Debug.Log("UseCannon()");
     }
+
     private void UseBoat()
     {
         currentSlime.Crafted(AbilityType.Boat);
 
-        // TODO!
+        Craft(currentSlime.gameObject);
+
+        currentSlime.gameObject.AddComponent<Boat>();
     }
 
     private void UseWall()
     {
-        currentSlime.Crafted(AbilityType.Wall, false);
+        currentSlime.Crafted(AbilityType.Wall);
 
-        GameObject slimeGameObject = currentSlime.gameObject;
+        Craft(currentSlime.gameObject);
 
-        slimeGameObject.tag = "Untagged";
-        slimeGameObject.layer = defaultLayer;
-        slimeGameObject.GetComponent<CapsuleCollider2D>().isTrigger = true;
-        slimeGameObject.GetComponent<Slime>().enabled = false;
-        slimeGameObject.GetComponent<SlimeCheckGround>().enabled = false;
-        slimeGameObject.AddComponent<Block>();
-
-        Debug.Log("wall call");
+        currentSlime.gameObject.AddComponent<Block>();
     }
 
-    private void UseHorn()
+    private void UseHorn(List<Slime> ableSlimes)
     {
-        currentAbleSlimes.ForEach(slime => slime.Pause());
+        ableSlimes.ForEach(slime => slime.Pause());
 
-        StartCoroutine(OnHorn(currentSlime, currentAbleSlimes));
+        StartCoroutine(OnHorn(currentSlime, ableSlimes));
+    }
+
+    private void Craft(GameObject slimeGameObject)
+    {
+        slimeGameObject.tag = untaggedTag;
+        slimeGameObject.layer = defaultLayer;
+        slimeGameObject.GetComponent<Slime>().enabled = false;
+        slimeGameObject.GetComponent<SlimeCheckGround>().enabled = false;
+        slimeGameObject.GetComponent<Rigidbody2D>().mass = 1000f;
     }
 
 }

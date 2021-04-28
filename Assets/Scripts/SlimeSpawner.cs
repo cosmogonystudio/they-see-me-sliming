@@ -6,9 +6,10 @@ public class SlimeSpawner : MonoBehaviour
 
     public enum SpawnType
     {
-        None,
         Down,
-        Right
+        Right,
+
+        None
     }
 
     [SerializeField]
@@ -35,37 +36,37 @@ public class SlimeSpawner : MonoBehaviour
 
     public void Spawn()
     {
-        if (stopSpawning == false)
-        {
-            GameObject instantiatedSpawn = Instantiate(spwanee, spawnPosition, Quaternion.identity);
-
-            instantiatedSpawn.transform.SetParent(transform);
-
-            Slime slime = instantiatedSpawn.GetComponent<Slime>();
-
-            switch (spawnType)
-            {
-                case SpawnType.Down:
-                    slime.Fall();
-                    break;
-                case SpawnType.Right:
-                    slime.KeepWalking();
-                    break;
-                default:
-                    slime.KeepWalking();
-                    break;
-            }
-
-            slimes.Add(slime);
-
-            if (slimes.Count >= spawnNumber)
-            {
-                stopSpawning = true;
-            }
-        }
-        else
+        if (stopSpawning == true)
         {
             CancelInvoke(spawnMethod);
+
+            return;
+        }
+
+        GameObject instantiatedSpawn = Instantiate(spwanee, spawnPosition, Quaternion.identity);
+
+        instantiatedSpawn.transform.SetParent(transform);
+
+        Slime slime = instantiatedSpawn.GetComponent<Slime>();
+
+        switch (spawnType)
+        {
+            case SpawnType.Down:
+                slime.Fall();
+                break;
+            case SpawnType.Right:
+                slime.KeepWalking();
+                break;
+            default:
+                slime.KeepWalking();
+                break;
+        }
+
+        slimes.Add(slime);
+
+        if (slimes.Count >= spawnNumber)
+        {
+            stopSpawning = true;
         }
     }
 
@@ -91,13 +92,19 @@ public class SlimeSpawner : MonoBehaviour
 
     void Start()
     {
+        stopSpawning = false;
+
         switch (spawnType)
         {
             case SpawnType.Down:
-                spawnPosition = new Vector3(transform.position.x, transform.position.y - (transform.localScale.y / 2f), transform.position.z);
+                spawnPosition = new Vector3(transform.position.x,
+                    transform.position.y - (transform.localScale.y / 2f) - (spwanee.transform.localScale.y / 2f),
+                    transform.position.z);
                 break;
             case SpawnType.Right:
-                spawnPosition = new Vector3(transform.position.x + (transform.localScale.x / 2f), transform.position.y, transform.position.z);
+                spawnPosition = new Vector3(transform.position.x + (transform.localScale.x / 2f) + (spwanee.transform.localScale.x / 2f),
+                    transform.position.y,
+                    transform.position.z);
                 break;
             default:
                 spawnPosition = transform.position;

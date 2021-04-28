@@ -1,26 +1,30 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
 public class TimeCounter : MonoBehaviour
 {
+
     static float seconds;
+
     static int minutes;
-    [SerializeField] TextMeshProUGUI timeText;
 
+    [SerializeField]
+    TextMeshProUGUI timeText;
 
-    private void Update()
+    void Update()
     {
-        if(seconds <= 60)
+        if (seconds <= 60f)
         {
             seconds += Time.deltaTime;
-        } else
+        }
+        else
         {
-            seconds = 0;
+            seconds = 0f;
+
             minutes += 1;
         }
         
-        timeText.text =  minutes.ToString() + ":" + ((int)seconds).ToString() + " " + "min";
+        timeText.text =  minutes + ":" + ((int)seconds) + " " + "min";
     }
+
 }

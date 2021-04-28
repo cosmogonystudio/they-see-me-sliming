@@ -28,21 +28,25 @@ public class SlimeAnimationBehaviour : StateMachineBehaviour
         
         if (currentShortNameHash == stateHashCraft)
         {
+            animator.speed = 0f;
             animator.enabled = false;
 
             GameManager.GetInstance().OnAbilityUse();
         }
-        else if (currentShortNameHash == stateHashHorn)
+        else
+        if (currentShortNameHash == stateHashHorn)
         {
             animator.speed = 0f;
 
             GameManager.GetInstance().OnAbilityUse();
         }
-        else if (currentShortNameHash == stateHashScared)
+        else
+        if (currentShortNameHash == stateHashScared)
         {
             animator.speed = 0f;
         }
-        else if (currentShortNameHash == stateHashDie)
+        else
+        if (currentShortNameHash == stateHashDie)
         {
             animator.gameObject.SetActive(false);
         }

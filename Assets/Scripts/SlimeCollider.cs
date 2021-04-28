@@ -1,18 +1,14 @@
 using UnityEngine;
 
-public abstract class SlimeTrigger : MonoBehaviour
+public abstract class SlimeCollider : MonoBehaviour
 {
 
     private const string slimeTag = "Slime";
 
-    protected virtual void OnTriggerEnter2D(Collider2D collision)
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
-        //Debug.Log("alegoria");
-
         if (collision.gameObject.CompareTag(slimeTag))
         {
-            //Debug.Log("margarida");
-
             OnSlime(collision.gameObject.GetComponent<Slime>());
         }
     }

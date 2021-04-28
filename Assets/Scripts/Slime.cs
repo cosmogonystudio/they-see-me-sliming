@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Slime : MonoBehaviour
@@ -15,8 +13,9 @@ public class Slime : MonoBehaviour
         Deeper
     }
 
-    public float moveSpeed;
-
+    [SerializeField]
+    private float moveSpeed;
+    
     [SerializeField]
     private Sprite spriteDefault;
     [SerializeField]
@@ -31,6 +30,8 @@ public class Slime : MonoBehaviour
     private Sprite spriteBoat;
     [SerializeField]
     private Sprite spriteWall;
+    [SerializeField]
+    private Sprite spriteScared;
 
     private Rigidbody2D m_rigidbody2D;
 
@@ -38,11 +39,19 @@ public class Slime : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
-    [HideInInspector] public Vector2 direction = Vector2.right;
+    private Vector2 direction = Vector2.right;
 
     private SlimeStatus slimeStatus;
 
-    private const string floorTag = "Floor";
+    public float GetMoveSpeed()
+    {
+        return moveSpeed;
+    }
+
+    public Vector2 GetDirection()
+    {
+        return direction;
+    }
 
     public SlimeStatus GetSlimeStatus()
     {
@@ -51,42 +60,43 @@ public class Slime : MonoBehaviour
 
     public void KeepWalking()
     {
+        m_rigidbody2D.WakeUp();
+
         spriteRenderer.sprite = spriteDefault;
 
-        slimeStatus = SlimeStatus.Default;
-
+        animator.enabled = true;
         animator.speed = 1f;
-
         animator.SetTrigger(SlimeAnimationBehaviour.animationWalking);
+
+        slimeStatus = SlimeStatus.Default;
     }
 
     public void Fall()
     {
-        animator.speed = 0f;
+        m_rigidbody2D.WakeUp();
 
         spriteRenderer.sprite = spriteFall;
+
+        animator.speed = 0f;
+        animator.enabled = false;
 
         slimeStatus = SlimeStatus.InAir;
     }
 
     public void Pause()
     {
+        m_rigidbody2D.Sleep();
+
         slimeStatus = SlimeStatus.Paused;
 
+        spriteRenderer.sprite = spriteScared;
+
+        animator.speed = 1f;
         animator.SetTrigger(SlimeAnimationBehaviour.animationScared);
     }
 
-    public void Crafted(AbilitySwap.AbilityType abilityType, bool sleepRigidbody = true)
+    public void Crafted(AbilitySwap.AbilityType abilityType)
     {
-        if (sleepRigidbody)
-        {
-            m_rigidbody2D.Sleep();
-        }
-        else
-        {
-            m_rigidbody2D.bodyType = RigidbodyType2D.Static;
-        }
-
         switch (abilityType)
         {
             case AbilitySwap.AbilityType.Bridge:
@@ -116,24 +126,24 @@ public class Slime : MonoBehaviour
         if (abilityType == AbilitySwap.AbilityType.Horn)
         {
             animator.SetTrigger(SlimeAnimationBehaviour.animationHorn);
-        } else
+        }
+        else
         {
             animator.SetTrigger(SlimeAnimationBehaviour.animationCraft);
-        }
 
-        SlimeIt();
+            SlimeIt();
+        }
     }
 
-    public void Die(bool slimeIt = true)
+    public void Die()
     {
         slimeStatus = SlimeStatus.Dead;
 
+        animator.enabled = true;
+        animator.speed = 1f;
         animator.SetTrigger(SlimeAnimationBehaviour.animationDie);
 
-        if (slimeIt)
-        {
-            SlimeIt();
-        }
+        SlimeIt();
     }
 
     public void DeeperAndDeeper()
@@ -165,31 +175,6 @@ public class Slime : MonoBehaviour
     {
         animator.speed = 0f;
     }
-
-    /*void FixedUpdate()
-    {
-        if (slimeStatus == SlimeStatus.Default)
-        {
-            m_rigidbody2D.MovePosition(m_rigidbody2D.position + direction * moveSpeed * Time.fixedDeltaTime);
-        }
-    }
-
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag(floorTag) && slimeStatus != SlimeStatus.Used)
-        {
-            KeepWalking();
-        }
-
-    }
-
-    void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag(floorTag) && slimeStatus != SlimeStatus.Used)
-        {
-            Fall();
-        }
-    }*/
 
     private void SlimeIt()
     {

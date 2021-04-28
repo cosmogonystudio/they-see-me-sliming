@@ -1,23 +1,27 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MapManager : MonoBehaviour
 {
     
     public int mapSize;
-    [HideInInspector] public int currentSize;
-    //[SerializeField] GameObject[] pieces;
-    [SerializeField] GameObject[] rooms;
-    [SerializeField] GameObject finalRoom, FirstRoom;
+
+    [HideInInspector]
+    public int currentSize;
+
+    [SerializeField]
+    GameObject[] rooms;
+
+    [SerializeField]
+    GameObject finalRoom;
+    [SerializeField]
+    GameObject firstRoom;
+
     Transform firstPoint;
     
-
-
-    private void Awake()
+    void Start()
     {
-        firstPoint = FirstRoom.transform.Find("TunnelStart");
+        firstPoint = firstRoom.transform.Find("TunnelStart");
+
         BeginCreation();
     }
 
@@ -28,18 +32,13 @@ public class MapManager : MonoBehaviour
 
     internal void SpawnFinalRoom(Transform spawnPoint)
     {
-        GameObject FinalRoom = Instantiate(finalRoom, spawnPoint.position, Quaternion.identity, transform);
+        GameObject finalRoomGameObject = Instantiate(finalRoom, spawnPoint.position, Quaternion.identity, transform);
     }
 
-    /*internal void SpawnNextPiece(Transform spawnPoint)
-    {
-        int rdm = UnityEngine.Random.Range(0, pieces.Length);
-        GameObject Piece = Instantiate(pieces[rdm], spawnPoint.position, Quaternion.identity, transform);
-    }*/
- 
     public void SpawnRoom(Transform spawnPoint)
     {
-        int rdm = UnityEngine.Random.Range(0, rooms.Length);
-        GameObject Piece = Instantiate(rooms[rdm], spawnPoint.position, Quaternion.identity, transform);
+        int rdm = Random.Range(0, rooms.Length);
+        GameObject piece = Instantiate(rooms[rdm], spawnPoint.position, Quaternion.identity, transform);
     }
+
 }

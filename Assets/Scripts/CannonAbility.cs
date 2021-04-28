@@ -1,28 +1,25 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class CannonAbility : SlimeTrigger
+public class CannonAbility : SlimeCollider
 {
-    [SerializeField] private float reach, height;
-    Vector3 reachPoint, heightPoint;
-    [SerializeField] private float launchSpeed;
 
+    [SerializeField]
+    private float reach;
+    [SerializeField]
+    private float height;
 
-    void CalculatePoints(Transform target)
-    {
-        reachPoint = target.position;
-        reachPoint.x += reach;
+    [SerializeField]
+    private float launchSpeed;
 
-        heightPoint = target.position;
-        heightPoint.y += height;
-        heightPoint.x += reach/2;
-    }
+    Vector3 reachPoint;
+    Vector3 heightPoint;
 
     IEnumerator LerpThatShit(Rigidbody2D target)
     {
-        float t = 0;
-        while(t <= 1)
+        float t = 0f;
+
+        while (t <= 1f)
         {
             Vector3 AB = Vector3.Lerp(target.position, heightPoint, t);
             Vector3 BC = Vector3.Lerp(heightPoint, reachPoint, t);
@@ -31,6 +28,7 @@ public class CannonAbility : SlimeTrigger
             target.MovePosition(ABC);
 
             yield return new WaitForEndOfFrame();
+
             t += 0.005f;
         }
 
@@ -39,10 +37,20 @@ public class CannonAbility : SlimeTrigger
 
     protected override void OnSlime(Slime slime)
     {
-        slime.gameObject.tag = "Untagged";
+        slime.gameObject.tag = AbilitySwap.untaggedTag;
         slime.gameObject.GetComponent<SlimeCheckGround>().enabled = false;
         CalculatePoints(slime.transform);
         StartCoroutine(LerpThatShit(slime.gameObject.GetComponent<Rigidbody2D>()));
-    }    
+    }
+
+    private void CalculatePoints(Transform target)
+    {
+        reachPoint = target.position;
+        reachPoint.x += reach;
+
+        heightPoint = target.position;
+        heightPoint.y += height;
+        heightPoint.x += reach / 2f;
+    }
 
 }
