@@ -11,6 +11,6 @@ public class StartButton : Button
     {
         Debug.Log("Esse botão vai iniciar o jogo");
 
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene(1);
     }
 }
