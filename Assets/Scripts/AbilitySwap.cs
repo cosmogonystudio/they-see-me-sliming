@@ -100,16 +100,18 @@ public class AbilitySwap : MonoBehaviour
 
     private void UseBridge()
     {
-        currentSlime.Crafted(AbilityType.Bridge, false);
+        currentSlime.Crafted(AbilityType.Bridge); //, false);
 
         GameObject slimeGameObject = currentSlime.gameObject;
 
+        /*
         slimeGameObject.tag = Slime.floorTag;
         slimeGameObject.layer = 7;
         slimeGameObject.GetComponent<CapsuleCollider2D>().enabled = false;
         slimeGameObject.GetComponent<PolygonCollider2D>().enabled = true;
         slimeGameObject.GetComponent<Rigidbody2D>().mass = 1000f;
         slimeGameObject.GetComponent<Slime>().enabled = false;
+        */
     }
 
     private void UseHook()

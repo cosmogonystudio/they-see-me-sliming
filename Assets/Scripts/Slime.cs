@@ -52,8 +52,6 @@ public class Slime : MonoBehaviour
 
     private float currentFallTime = 0f;
 
-    private bool caralho = false;
-
     public SlimeStatus GetSlimeStatus()
     {
         return slimeStatus;
@@ -174,8 +172,6 @@ public class Slime : MonoBehaviour
         animator = GetComponent<Animator>();
 
         spriteRenderer = GetComponent<SpriteRenderer>();
-
-        caralho = false;
     }
 
     void Start()
@@ -197,11 +193,6 @@ public class Slime : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.layer == 7)
-        {
-            caralho = true;
-        }
-        
         if (collision.gameObject.CompareTag(floorTag) && slimeStatus == SlimeStatus.InAir)
         {
             if (currentFallTime >= maxFallTime)
@@ -221,17 +212,7 @@ public class Slime : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(floorTag) && slimeStatus == SlimeStatus.Default)
         {
-            if (caralho == false)
-            {
-                Fall();
-            }
-            else
-            if (collision.gameObject.layer == 7)
-            {
-                slimeStatus = SlimeStatus.InAir;
-
-                caralho = false;
-            }
+            Fall();
         }
     }
 

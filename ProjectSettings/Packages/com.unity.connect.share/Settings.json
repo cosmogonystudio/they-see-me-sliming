@@ -6,7 +6,7 @@
             {
                 "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "buildOutputDirList",
-                "value": "{\"m_Value\":\"C:/Users/Tonhex/GeleiaGameStudio/they-see-me-sliming/Build;;;;;;;;;\"}"
+                "value": "{\"m_Value\":\"C:/Users/Tonhex/GeleiaGameStudio/Nova pasta/they-see-me-sliming/Build;C:/Users/Tonhex/GeleiaGameStudio/they-see-me-sliming/Build;;;;;;;;\"}"
             }
         ]
     }
