@@ -81,7 +81,12 @@ public class SlimeSpawner : MonoBehaviour
 
     public List<Slime> GetAbleSlimes()
     {
-        return slimes.FindAll(slime => slime.GetSlimeStatus() == Slime.SlimeStatus.Default);
+        return slimes.FindAll(slime => slime.isActiveAndEnabled == true &&
+            (
+                slime.GetSlimeStatus() == Slime.SlimeStatus.Default ||
+                slime.GetSlimeStatus() == Slime.SlimeStatus.InAir
+            )
+        );
     }
 
     void Start()
