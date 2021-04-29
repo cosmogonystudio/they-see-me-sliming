@@ -53,8 +53,8 @@ public abstract class AbilityButton : MonoBehaviour, IPointerClickHandler, IPoin
     {
         if (GameManager.GetInstance().GetAbilityType() == abilityType)
         {
-            mainImage.color = Color.green;
-            secondaryImage.color = Color.green;
+            mainImage.color = Color.magenta;
+            secondaryImage.color = Color.magenta;
         }
         else 
         {

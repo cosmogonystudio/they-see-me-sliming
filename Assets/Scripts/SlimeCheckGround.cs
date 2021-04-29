@@ -53,9 +53,12 @@ public class SlimeCheckGround : MonoBehaviour
         {
             if (currentFallTime >= maxFallTime)
             {
+                Debug.Log("CheckGround::slime.Die()");
+
                 slime.Die();
             }
             else
+            if (slime.GetSlimeStatus() != Slime.SlimeStatus.Default)
             {
                 Debug.Log("CheckGround::slime.KeepWalking()");
 
@@ -64,7 +67,8 @@ public class SlimeCheckGround : MonoBehaviour
                 slime.KeepWalking();
             }
         }
-        else 
+        else
+        if (slime.GetSlimeStatus() != Slime.SlimeStatus.InAir)
         {
             Debug.Log("CheckGround::slime.Fall()");
 

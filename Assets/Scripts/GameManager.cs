@@ -45,10 +45,15 @@ public class GameManager : MonoBehaviour
 
         slimesItCount = slimesUsedCount + slimesDeadCount + slimesDeeperCount;
 
+        Debug.Log("");
+        Debug.Log("====");
         Debug.Log("slimesUsedCount: " + slimesUsedCount);
         Debug.Log("slimesDeadCount: " + slimesDeadCount);
         Debug.Log("slimesDeeperCount: " + slimesDeeperCount);
         Debug.Log("slimesItCount: " + slimesItCount);
+        Debug.Log("currentSpawner.SpawnNumber(): " + currentSpawner.SpawnNumber());
+        Debug.Log("====");
+        Debug.Log("");
 
         if (slimesItCount >= currentSpawner.SpawnNumber())
         {

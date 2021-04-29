@@ -128,10 +128,14 @@ public class Slime : MonoBehaviour
         if (abilityType == AbilitySwap.AbilityType.Horn)
         {
             animator.SetTrigger(SlimeAnimationBehaviour.animationHorn);
+
+            AudioManager.GetInstance().PlayAbility(AbilitySwap.AbilityType.Horn);
         }
         else
         {
             animator.SetTrigger(SlimeAnimationBehaviour.animationCraft);
+
+            AudioManager.GetInstance().PlayStatus(SlimeStatus.Used);
 
             SlimeIt();
         }
@@ -145,7 +149,7 @@ public class Slime : MonoBehaviour
         animator.speed = 1f;
         animator.SetTrigger(SlimeAnimationBehaviour.animationDie);
 
-        AudioManager.GetInstance().PlayStatus(slimeStatus);
+        AudioManager.GetInstance().PlayStatus(SlimeStatus.Dead);
 
         SlimeIt();
     }
@@ -154,7 +158,7 @@ public class Slime : MonoBehaviour
     {
         slimeStatus = SlimeStatus.Deeper;
 
-        AudioManager.GetInstance().PlayStatus(slimeStatus);
+        AudioManager.GetInstance().PlayStatus(SlimeStatus.Deeper);
 
         SlimeIt();
 

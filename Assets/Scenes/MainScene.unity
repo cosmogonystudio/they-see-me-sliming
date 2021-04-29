@@ -375,7 +375,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a1bef4307581e9a4381a1dae3cf2aeae, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -600,11 +600,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2876967433754879350, guid: 34893a2a3b76d2d40a9b3ee87c2b5ef3, type: 3}
       propertyPath: spawnRate
-      value: 2
+      value: 2.5
       objectReference: {fileID: 0}
     - target: {fileID: 2876967433754879350, guid: 34893a2a3b76d2d40a9b3ee87c2b5ef3, type: 3}
       propertyPath: spawnType
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2876967433754879350, guid: 34893a2a3b76d2d40a9b3ee87c2b5ef3, type: 3}
+      propertyPath: spawnNumber
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6972454186296257921, guid: 34893a2a3b76d2d40a9b3ee87c2b5ef3, type: 3}
       propertyPath: spawnType
@@ -961,7 +965,11 @@ PrefabInstance:
     - target: {fileID: 6880034406943360713, guid: 132cbf8ee367a8949b6d577405724999, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: -5773646671575428721, guid: 1349a30879506384883263507a05d22b, type: 2}
+      objectReference: {fileID: -166450874424539768, guid: 3e8dfe2975beeb74c94d76879349f9f9, type: 2}
+    - target: {fileID: 6880034406943360713, guid: 132cbf8ee367a8949b6d577405724999, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6880034406966199335, guid: 132cbf8ee367a8949b6d577405724999, type: 3}
       propertyPath: m_Name
       value: Deeper
@@ -1064,6 +1072,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7451666863663898820, guid: 162fb072818b6e44e93232ddbce5e053, type: 3}
+      propertyPath: pauseSeconds
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7451666863663898820, guid: 162fb072818b6e44e93232ddbce5e053, type: 3}
       propertyPath: bridgeLayer.m_Bits
       value: 128

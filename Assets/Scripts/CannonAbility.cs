@@ -34,7 +34,6 @@ public class CannonAbility : SlimeTrigger
 
     protected override void OnSlime(Slime slime)
     {
-        slime.gameObject.tag = AbilitySwap.untaggedTag;
         slime.GetComponent<SlimeCheckGround>().enabled = false;
 
         CalculatePoints(slime.transform);

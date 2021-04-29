@@ -3,67 +3,42 @@ using UnityEngine;
 public class Hotbar : MonoBehaviour
 {
 
-    [SerializeField]
-    private GameObject[] buttons;
-
     private void Start()
     {
-        Reset();
+        GameManager.GetInstance().SetAbilityType(AbilitySwap.AbilityType.None);
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            SetHotKey(AbilitySwap.AbilityType.Bridge);
+            GameManager.GetInstance().SetAbilityType(AbilitySwap.AbilityType.Bridge);
         }
         else
         if (Input.GetKeyDown(KeyCode.W))
         {
-            SetHotKey(AbilitySwap.AbilityType.Hook);
+            GameManager.GetInstance().SetAbilityType(AbilitySwap.AbilityType.Hook);
         }
         else
         if (Input.GetKeyDown(KeyCode.A))
         {
-            SetHotKey(AbilitySwap.AbilityType.Cannon);
+            GameManager.GetInstance().SetAbilityType(AbilitySwap.AbilityType.Cannon);
         }
         else
         if (Input.GetKeyDown(KeyCode.D))
         {
-            SetHotKey(AbilitySwap.AbilityType.Boat);
+            GameManager.GetInstance().SetAbilityType(AbilitySwap.AbilityType.Boat);
         }
         else
         if (Input.GetKeyDown(KeyCode.S))
         {
-            SetHotKey(AbilitySwap.AbilityType.Wall);
+            GameManager.GetInstance().SetAbilityType(AbilitySwap.AbilityType.Wall);
         }
         else
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            SetHotKey(AbilitySwap.AbilityType.Horn);
+            GameManager.GetInstance().SetAbilityType(AbilitySwap.AbilityType.Horn);
         }
-    }
-
-    private void Reset()
-    {
-        for (int i = 0; i < buttons.Length; i++)
-        {
-            buttons[i].SetActive(false);
-        }
-    }
-
-    private void SetHotKey(AbilitySwap.AbilityType abilityType)
-    {
-        Highlight((int)abilityType);
-
-        GameManager.GetInstance().SetAbilityType(abilityType);
-    }
-
-    private void Highlight(int index)
-    {
-        Reset();
-
-        buttons[index].SetActive(true);
     }
 
 }

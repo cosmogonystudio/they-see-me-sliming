@@ -45,11 +45,8 @@ public class AudioManager : MonoBehaviour
             case AbilitySwap.AbilityType.Horn:
                 audioClip = hornAudioClip;
                 break;
-            case AbilitySwap.AbilityType.Wall:
-                audioClip = slideAudioClip;
-                break;
             default:
-                audioClip = craftAudioClip;
+                audioClip = slideAudioClip;
                 break;
         }
 
@@ -64,6 +61,9 @@ public class AudioManager : MonoBehaviour
         {
             case Slime.SlimeStatus.Paused:
                 audioClip = scaredAudioClip;
+                break;
+            case Slime.SlimeStatus.Used:
+                audioClip = craftAudioClip;
                 break;
             case Slime.SlimeStatus.Dead:
                 audioClip = dieAudioClip;

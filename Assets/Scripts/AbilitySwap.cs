@@ -42,18 +42,13 @@ public class AbilitySwap : MonoBehaviour
 
     public void UseAbility(Slime slime)
     {
-        if (currentUsing == true || 
-            (
-                currentAbilityType == AbilityType.None
-            ))
+        if (currentUsing == true || currentAbilityType == AbilityType.None)
         {
             return;
         }
 
         currentUsing = true;
         currentSlime = slime;
-
-        AudioManager.GetInstance().PlayAbility(currentAbilityType);
 
         slime.Use(currentAbilityType);
     }
@@ -136,9 +131,9 @@ public class AbilitySwap : MonoBehaviour
 
         Craft(currentSlime.gameObject);
 
-        currentSlime.GetComponent<Rigidbody2D>().Sleep();
+        currentSlime.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
 
-        Debug.Log("TODO");
+        currentSlime.GetComponent<CapsuleCollider2D>().isTrigger = true;
     }
 
     private void UseCannon()
@@ -155,9 +150,9 @@ public class AbilitySwap : MonoBehaviour
         boxCollider2D.isTrigger = true;
 
         CannonAbility cannonAbility = currentSlime.gameObject.AddComponent<CannonAbility>();
-        cannonAbility.reach = 6;
-        cannonAbility.height = 2;
-        cannonAbility.launchSpeed = 1;
+        cannonAbility.reach = 6f;
+        cannonAbility.height = 2f;
+        cannonAbility.launchSpeed = 1f;
     }
 
     private void UseBoat()
@@ -170,7 +165,7 @@ public class AbilitySwap : MonoBehaviour
         capsuleCollider2D.direction = CapsuleDirection2D.Horizontal;
         capsuleCollider2D.size = boatSize;
 
-        currentSlime.GetComponent<Rigidbody2D>().mass = 10f * 1000f;
+        currentSlime.GetComponent<Rigidbody2D>().mass = 0.003f * 1000f;
 
         currentSlime.gameObject.AddComponent<Boat>();
     }
@@ -184,16 +179,16 @@ public class AbilitySwap : MonoBehaviour
         currentSlime.GetComponent<CapsuleCollider2D>().enabled = false;
         currentSlime.GetComponent<BoxCollider2D>().enabled = true;
 
-        currentSlime.GetComponent<Rigidbody2D>().mass = 100f * 1000f;
+        currentSlime.GetComponent<Rigidbody2D>().mass = 10f * 1000f;
 
         currentSlime.gameObject.AddComponent<Block>();
     }
 
     private void UseHorn(List<Slime> ableSlimes)
     {
-        AudioManager.GetInstance().PlayStatus(Slime.SlimeStatus.Paused);
-
         ableSlimes.ForEach(slime => slime.Pause());
+
+        AudioManager.GetInstance().PlayStatus(Slime.SlimeStatus.Paused);
 
         StartCoroutine(OnHorn(currentSlime, ableSlimes));
     }
