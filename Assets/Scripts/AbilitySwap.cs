@@ -26,7 +26,9 @@ public class AbilitySwap : MonoBehaviour
     private Slime currentSlime = null;
     private bool currentUsing = false;
 
-    private int defaultLayer = LayerMask.NameToLayer("Default");
+    private int defaultLayer;
+
+    private Vector2 boatSize = new Vector2(4.85f, 1.6f);
 
     public AbilityType GetCurrentAbilityType()
     {
@@ -51,6 +53,8 @@ public class AbilitySwap : MonoBehaviour
 
         currentUsing = true;
         currentSlime = slime;
+
+        AudioManager.GetInstance().PlayAbility(currentAbilityType);
 
         slime.Use(currentAbilityType);
     }
@@ -91,6 +95,11 @@ public class AbilitySwap : MonoBehaviour
         currentUsing = false;
     }
 
+    void Awake()
+    {
+        defaultLayer = LayerMask.NameToLayer("Default");
+    }
+
     IEnumerator OnHorn(Slime slime, List<Slime> ableSlimes)
     {
         yield return new WaitForSeconds(pauseSeconds);
@@ -116,21 +125,37 @@ public class AbilitySwap : MonoBehaviour
 
         Craft(currentSlime.gameObject);
 
-        // TODO
+        currentSlime.GetComponent<CapsuleCollider2D>().enabled = false;
+        currentSlime.GetComponent<PolygonCollider2D>().enabled = true;
+
+        currentSlime.GetComponent<Rigidbody2D>().mass = 1f * 1000f;
     }
 
     private void UseHook()
     {
-        currentSlime.GetComponent<Rigidbody2D>().Sleep();
-
         currentSlime.Crafted(AbilityType.Hook);
 
-        Debug.Log("UseHook()");
+        Craft(currentSlime.gameObject);
+
+        currentSlime.GetComponent<Rigidbody2D>().Sleep();
+
+        Debug.Log("TODO");
     }
 
     private void UseCannon()
     {
-        Debug.Log("UseCannon()");
+        currentSlime.Crafted(AbilityType.Cannon);
+
+        Craft(currentSlime.gameObject);
+
+        currentSlime.GetComponent<Rigidbody2D>().Sleep();
+
+        currentSlime.GetComponent<CapsuleCollider2D>().enabled = false;
+        BoxCollider2D boxCollider2D = currentSlime.GetComponent<BoxCollider2D>();
+        boxCollider2D.enabled = true;
+        boxCollider2D.isTrigger = true;
+
+        currentSlime.gameObject.AddComponent<CannonAbility>();
     }
 
     private void UseBoat()
@@ -138,6 +163,12 @@ public class AbilitySwap : MonoBehaviour
         currentSlime.Crafted(AbilityType.Boat);
 
         Craft(currentSlime.gameObject);
+
+        CapsuleCollider2D capsuleCollider2D = currentSlime.GetComponent<CapsuleCollider2D>();
+        capsuleCollider2D.direction = CapsuleDirection2D.Horizontal;
+        capsuleCollider2D.size = boatSize;
+
+        currentSlime.GetComponent<Rigidbody2D>().mass = 10f * 1000f;
 
         currentSlime.gameObject.AddComponent<Boat>();
     }
@@ -148,11 +179,18 @@ public class AbilitySwap : MonoBehaviour
 
         Craft(currentSlime.gameObject);
 
+        currentSlime.GetComponent<CapsuleCollider2D>().enabled = false;
+        currentSlime.GetComponent<BoxCollider2D>().enabled = true;
+
+        currentSlime.GetComponent<Rigidbody2D>().mass = 100f * 1000f;
+
         currentSlime.gameObject.AddComponent<Block>();
     }
 
     private void UseHorn(List<Slime> ableSlimes)
     {
+        AudioManager.GetInstance().PlayStatus(Slime.SlimeStatus.Paused);
+
         ableSlimes.ForEach(slime => slime.Pause());
 
         StartCoroutine(OnHorn(currentSlime, ableSlimes));
@@ -164,7 +202,6 @@ public class AbilitySwap : MonoBehaviour
         slimeGameObject.layer = defaultLayer;
         slimeGameObject.GetComponent<Slime>().enabled = false;
         slimeGameObject.GetComponent<SlimeCheckGround>().enabled = false;
-        slimeGameObject.GetComponent<Rigidbody2D>().mass = 1000f;
     }
 
 }

@@ -4,18 +4,12 @@ public class GameManager : MonoBehaviour
 {
 
     [SerializeField]
-    private GameObject deeperMessage;
-    [SerializeField]
-    private GameObject andDeeperMessage;
-
-    [SerializeField]
-    private float deepTextSeconds;
-
-    [SerializeField]
     private AbilitySwap abilitySwap;
 
     [SerializeField]
     private SlimeSpawner currentSpawner;
+
+    private Slime.SlimeStatus gameOverSlimeStatus;
 
     private int slimesItCount;
     private int slimesUsedCount;
@@ -53,9 +47,11 @@ public class GameManager : MonoBehaviour
         Debug.Log("slimesDeeperCount: " + slimesDeeperCount);
         Debug.Log("slimesItCount: " + slimesItCount);
 
-        if (slimesItCount >= currentSpawner.SpawnNumber())
+        if (CheckGameOver() == true)
         {
-            switch (slimeStatus)
+            gameOverSlimeStatus = slimeStatus;
+
+            switch (gameOverSlimeStatus)
             {
                 case Slime.SlimeStatus.Used:
                     Debug.Log("Restart");
@@ -67,9 +63,15 @@ public class GameManager : MonoBehaviour
                     Debug.Log("Passed");
                     break;
                 default:
+                    Debug.Log("[?]");
                     break;
             }
         }
+    }
+
+    public Slime.SlimeStatus GetGameOverSlimeStatus()
+    {
+        return gameOverSlimeStatus;
     }
 
     public AbilitySwap.AbilityType GetAbilityType()
@@ -82,6 +84,11 @@ public class GameManager : MonoBehaviour
         abilitySwap.SetAbilityType(abilityType);
     }
 
+    public void SetCurrentSpawner(SlimeSpawner slimeSpawner)
+    {
+        currentSpawner = slimeSpawner;
+    }
+
     public void UseAbility(Slime slime)
     {
         abilitySwap.UseAbility(slime);
@@ -90,6 +97,19 @@ public class GameManager : MonoBehaviour
     public void OnAbilityUse()
     {
         abilitySwap.OnAbilityUse(currentSpawner.GetAbleSlimes());
+    }
+
+    public void ResetCounters()
+    {
+        slimesItCount = 0;
+        slimesDeadCount = 0;
+        slimesDeeperCount = 0;
+        slimesUsedCount = 0;
+    }
+
+    public bool CheckGameOver()
+    {
+        return (slimesItCount >= currentSpawner.SpawnNumber());
     }
 
     void Awake()
@@ -103,6 +123,11 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    void Start()
+    {
+        ResetCounters();
     }
 
 }

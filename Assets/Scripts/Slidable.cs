@@ -8,10 +8,12 @@ public class Slidable : MonoBehaviour
 
     private Collider2D coll;
 
-    private int defaultLayer = LayerMask.NameToLayer("Default");
+    private int defaultLayer;
 
     void Awake()
     {
+        defaultLayer = LayerMask.NameToLayer("Default");
+
         coll = GetComponent<Collider2D>();
     }
 

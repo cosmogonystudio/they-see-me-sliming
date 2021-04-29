@@ -45,12 +45,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92522616a138fed498fb412ac8a434b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultLayer:
-    serializedVersion: 2
-    m_Bits: 1
-  bridgeLayerMask:
-    serializedVersion: 2
-    m_Bits: 128
   pauseSeconds: 3
 --- !u!114 &7451666863663898821
 MonoBehaviour:
@@ -64,7 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad24ca6735a40824ebe5aaa3dce9b7a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slimeLayer:
+  layerMask:
     serializedVersion: 2
     m_Bits: 64
 --- !u!114 &7451666863663898822

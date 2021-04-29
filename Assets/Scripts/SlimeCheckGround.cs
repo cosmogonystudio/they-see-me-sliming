@@ -7,6 +7,8 @@ public class SlimeCheckGround : MonoBehaviour
     private LayerMask layerMask;
 
     [SerializeField]
+    private float boxReach;
+    [SerializeField]
     private float maxFallTime;
 
     private Slime slime;
@@ -45,7 +47,7 @@ public class SlimeCheckGround : MonoBehaviour
 
     private void CheckGround()
     {
-        RaycastHit2D hit = Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, Mathf.Infinity, layerMask);
+        RaycastHit2D hit = Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, boxReach, layerMask);
 
         if (hit.collider != null)
         {

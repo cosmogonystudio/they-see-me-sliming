@@ -1,4 +1,4 @@
-public class Exit : SlimeCollider
+public class Exit : SlimeTrigger
 {
 
     protected override void OnSlime(Slime slime)

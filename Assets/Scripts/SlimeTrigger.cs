@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public abstract class SlimeCollider : MonoBehaviour
+public abstract class SlimeTrigger : MonoBehaviour
 {
 
-    protected virtual void OnCollisionEnter2D(Collision2D collision)
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag(Slime.slimeTag))
         {

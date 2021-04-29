@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 5407223556578535492}
   - component: {fileID: 5407223556578535499}
   - component: {fileID: -3794360121885972223}
-  - component: {fileID: 5407223556578535494}
+  - component: {fileID: 1902832380}
+  - component: {fileID: 941097282159767797}
+  - component: {fileID: 8315803814883498621}
   - component: {fileID: 5407223556578535493}
   - component: {fileID: 5407223556578535495}
-  - component: {fileID: 1902832380}
   - component: {fileID: 1902832373}
   m_Layer: 6
   m_Name: Slime
@@ -107,7 +108,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!61 &5407223556578535494
+--- !u!70 &1902832380
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5407223556578535498}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 2.3, y: 2.7}
+  m_Direction: 0
+--- !u!61 &941097282159767797
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,8 +148,37 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.5, y: 2.85}
+  m_Size: {x: 2.1041667, y: 2.3229167}
   m_EdgeRadius: 0
+--- !u!60 &8315803814883498621
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5407223556578535498}
+  m_Enabled: 0
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.8763487, y: 2.875}
+    newSize: {x: 2.8763487, y: 2.875}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -2.200201, y: 0.21875}
+      - {x: -2.663794, y: -0.21875}
+      - {x: 2.6637938, y: -0.21875}
+      - {x: 2.2002013, y: 0.21875}
 --- !u!50 &5407223556578535493
 Rigidbody2D:
   serializedVersion: 4
@@ -166,31 +212,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c224380839b328e448bbeabb5ffc8d8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 3
+  moveSpeed: 4
   spriteDefault: {fileID: -3621471453987803102, guid: 763fda0784756034781e5e85be7ef3cf, type: 3}
-  spriteFall: {fileID: 8358847539892940752, guid: 763fda0784756034781e5e85be7ef3cf, type: 3}
+  spriteFall: {fileID: 21300000, guid: 09f10fa219b6d7e49af606824c51b772, type: 3}
   spriteBridge: {fileID: 21300000, guid: de754daf0605c9348bc4de48c03f3ec8, type: 3}
   spriteHook: {fileID: 21300000, guid: b6653b2374e6d594a82b3b531f28a9d9, type: 3}
   spriteCannon: {fileID: 21300000, guid: 0f1141325ca56b34188a8f98415dd574, type: 3}
   spriteBoat: {fileID: 21300000, guid: d5e13f00b0589b24ab8b3babfa9aa09e, type: 3}
   spriteWall: {fileID: 21300000, guid: f8ca615f31fc2314395e236d73afeaee, type: 3}
-  direction: {x: 1, y: 0}
---- !u!70 &1902832380
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5407223556578535498}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.085510015, y: 0}
-  m_Size: {x: 2.2492766, y: 2.8763487}
-  m_Direction: 0
+  spriteScared: {fileID: 6875453075300963811, guid: 431a2ab26123bb641b2fae7d0b7b4e12, type: 3}
 --- !u!114 &1902832373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -203,7 +233,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3b3db910440e004683fc9cecbcf07b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boxReach: 0.05
-  layer:
+  layerMask:
     serializedVersion: 2
     m_Bits: 128
+  boxReach: 0.05
+  maxFallTime: 1

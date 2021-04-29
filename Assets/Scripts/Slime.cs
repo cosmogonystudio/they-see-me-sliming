@@ -13,6 +13,8 @@ public class Slime : MonoBehaviour
         Deeper
     }
 
+    public const string slimeTag = "Slime";
+
     [SerializeField]
     private float moveSpeed;
     
@@ -143,12 +145,16 @@ public class Slime : MonoBehaviour
         animator.speed = 1f;
         animator.SetTrigger(SlimeAnimationBehaviour.animationDie);
 
+        AudioManager.GetInstance().PlayStatus(slimeStatus);
+
         SlimeIt();
     }
 
     public void DeeperAndDeeper()
     {
         slimeStatus = SlimeStatus.Deeper;
+
+        AudioManager.GetInstance().PlayStatus(slimeStatus);
 
         SlimeIt();
 

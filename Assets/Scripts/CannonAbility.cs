@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class CannonAbility : SlimeCollider
+public class CannonAbility : SlimeTrigger
 {
 
     [SerializeField]
@@ -38,8 +38,12 @@ public class CannonAbility : SlimeCollider
     protected override void OnSlime(Slime slime)
     {
         slime.gameObject.tag = AbilitySwap.untaggedTag;
-        slime.gameObject.GetComponent<SlimeCheckGround>().enabled = false;
+        slime.GetComponent<SlimeCheckGround>().enabled = false;
+
         CalculatePoints(slime.transform);
+
+        AudioManager.GetInstance().PlayAbility(AbilitySwap.AbilityType.Cannon);
+
         StartCoroutine(LerpThatShit(slime.gameObject.GetComponent<Rigidbody2D>()));
     }
 
