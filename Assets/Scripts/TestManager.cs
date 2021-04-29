@@ -30,12 +30,9 @@ public class TestManager : MonoBehaviour
     {
         levelIndex = 0;
 
-        SetCurrentLevel();
-    }
+        GameManager.GetInstance().onGameOver = CheckTest;
 
-    void Update()
-    {
-        CheckTest();
+        SetCurrentLevel();
     }
 
     IEnumerator GoDeeper()
@@ -97,11 +94,6 @@ public class TestManager : MonoBehaviour
 
     private void CheckTest()
     {
-        if (GameManager.GetInstance().CheckGameOver() == false)
-        {
-            return;
-        }
-
         switch (GameManager.GetInstance().GetGameOverSlimeStatus())
         {
             case Slime.SlimeStatus.Dead:

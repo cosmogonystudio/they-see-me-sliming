@@ -44,8 +44,7 @@ public class AbilitySwap : MonoBehaviour
     {
         if (currentUsing == true || 
             (
-                currentAbilityType == AbilityType.None ||
-                currentAbilityType == AbilityType.Cannon
+                currentAbilityType == AbilityType.None
             ))
         {
             return;
@@ -148,14 +147,17 @@ public class AbilitySwap : MonoBehaviour
 
         Craft(currentSlime.gameObject);
 
-        currentSlime.GetComponent<Rigidbody2D>().Sleep();
+        currentSlime.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
 
         currentSlime.GetComponent<CapsuleCollider2D>().enabled = false;
         BoxCollider2D boxCollider2D = currentSlime.GetComponent<BoxCollider2D>();
         boxCollider2D.enabled = true;
         boxCollider2D.isTrigger = true;
 
-        currentSlime.gameObject.AddComponent<CannonAbility>();
+        CannonAbility cannonAbility = currentSlime.gameObject.AddComponent<CannonAbility>();
+        cannonAbility.reach = 6;
+        cannonAbility.height = 2;
+        cannonAbility.launchSpeed = 1;
     }
 
     private void UseBoat()

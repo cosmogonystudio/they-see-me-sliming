@@ -4,13 +4,10 @@ using UnityEngine;
 public class CannonAbility : SlimeTrigger
 {
 
-    [SerializeField]
-    private float reach;
-    [SerializeField]
-    private float height;
+    public float reach;
+    public float height;
 
-    [SerializeField]
-    private float launchSpeed;
+    public float launchSpeed;
 
     Vector3 reachPoint;
     Vector3 heightPoint;

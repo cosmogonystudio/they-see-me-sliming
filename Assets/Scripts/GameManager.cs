@@ -3,6 +3,9 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 
+    [HideInInspector]
+    public System.Action onGameOver;
+
     [SerializeField]
     private AbilitySwap abilitySwap;
 
@@ -47,7 +50,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("slimesDeeperCount: " + slimesDeeperCount);
         Debug.Log("slimesItCount: " + slimesItCount);
 
-        if (CheckGameOver() == true)
+        if (slimesItCount >= currentSpawner.SpawnNumber())
         {
             gameOverSlimeStatus = slimeStatus;
 
@@ -65,6 +68,11 @@ public class GameManager : MonoBehaviour
                 default:
                     Debug.Log("[?]");
                     break;
+            }
+
+            if (onGameOver != null)
+            {
+                onGameOver.Invoke();
             }
         }
     }
@@ -105,11 +113,8 @@ public class GameManager : MonoBehaviour
         slimesDeadCount = 0;
         slimesDeeperCount = 0;
         slimesUsedCount = 0;
-    }
 
-    public bool CheckGameOver()
-    {
-        return (slimesItCount >= currentSpawner.SpawnNumber());
+        gameOverSlimeStatus = Slime.SlimeStatus.Default;
     }
 
     void Awake()
@@ -117,6 +122,8 @@ public class GameManager : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+
+            onGameOver = null;
         }
         else
         if (instance != this)

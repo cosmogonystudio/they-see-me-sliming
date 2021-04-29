@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c224380839b328e448bbeabb5ffc8d8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4
+  moveSpeed: 3
   spriteDefault: {fileID: -3621471453987803102, guid: 763fda0784756034781e5e85be7ef3cf, type: 3}
   spriteFall: {fileID: 21300000, guid: 09f10fa219b6d7e49af606824c51b772, type: 3}
   spriteBridge: {fileID: 21300000, guid: de754daf0605c9348bc4de48c03f3ec8, type: 3}
