@@ -3,8 +3,32 @@ using UnityEngine;
 public class Hotbar : MonoBehaviour
 {
 
-    private void Start()
+    [Header("[0-Bridge, 1-Hook, 2-Cannon, 3-Boat, 4-Wall, 5-Horn]")]
+    [SerializeField]
+    private AbilityButton[] abilityButtons;
+
+    public void ResetButtons()
     {
+        for (int i = 0; i < abilityButtons.Length; i++)
+        {
+            abilityButtons[i].ResetButton();
+        }
+    }
+
+    public void HighlightButton(int index)
+    {
+        ResetButtons();
+
+        if (index > 0 && index < abilityButtons.Length)
+        {
+            abilityButtons[index].HighlightButton();
+        }
+    }
+
+    void Start()
+    {
+        ResetButtons();
+
         GameManager.GetInstance().SetAbilityType(AbilitySwap.AbilityType.None);
     }
 

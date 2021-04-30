@@ -87,9 +87,9 @@ public class Slime : MonoBehaviour
 
     public void Pause()
     {
-        m_rigidbody2D.Sleep();
-
         slimeStatus = SlimeStatus.Paused;
+
+        m_rigidbody2D.Sleep();
 
         spriteRenderer.sprite = spriteScared;
 
@@ -145,11 +145,11 @@ public class Slime : MonoBehaviour
     {
         slimeStatus = SlimeStatus.Dead;
 
-        animator.enabled = true;
-        animator.speed = 1f;
-        animator.SetTrigger(SlimeAnimationBehaviour.animationDie);
-
         AudioManager.GetInstance().PlayStatus(SlimeStatus.Dead);
+
+        animator.enabled = true;
+        animator.speed = 1.5f;
+        animator.SetTrigger(SlimeAnimationBehaviour.animationDie);
 
         SlimeIt();
     }

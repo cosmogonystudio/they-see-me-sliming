@@ -4,7 +4,7 @@ public class SlimeCheckGround : MonoBehaviour
 {
 
     [SerializeField]
-    private LayerMask layerMask;
+    private LayerMask groundLayerMask;
 
     [SerializeField]
     private float boxReach;
@@ -47,30 +47,26 @@ public class SlimeCheckGround : MonoBehaviour
 
     private void CheckGround()
     {
-        RaycastHit2D hit = Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, boxReach, layerMask);
+        RaycastHit2D hit = Physics2D.BoxCast(coll.bounds.center, coll.bounds.size, 0f, Vector2.down, boxReach, groundLayerMask);
 
         if (hit.collider != null)
         {
             if (currentFallTime >= maxFallTime)
             {
-                Debug.Log("CheckGround::slime.Die()");
+                this.enabled = false;
 
                 slime.Die();
             }
             else
             if (slime.GetSlimeStatus() != Slime.SlimeStatus.Default)
             {
-                Debug.Log("CheckGround::slime.KeepWalking()");
-
-                currentFallTime = 0f;
-
                 slime.KeepWalking();
             }
         }
         else
         if (slime.GetSlimeStatus() != Slime.SlimeStatus.InAir)
         {
-            Debug.Log("CheckGround::slime.Fall()");
+            currentFallTime = 0f;
 
             slime.Fall();
         }

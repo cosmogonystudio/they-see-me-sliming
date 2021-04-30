@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad24ca6735a40824ebe5aaa3dce9b7a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  layerMask:
+  slimeLayerMask:
     serializedVersion: 2
     m_Bits: 64
 --- !u!114 &7451666863663898822
@@ -73,10 +73,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 381023bdc4eb4484d904c0ab73e0f9cc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buttons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  abilityButtons: []

@@ -9,7 +9,19 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1902832373, guid: bc7bc568b1778fa41a7f03841b0d7070, type: 3}
       propertyPath: maxFallTime
-      value: 1
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1902832373, guid: bc7bc568b1778fa41a7f03841b0d7070, type: 3}
+      propertyPath: groundLayerMask.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 941097282159767797, guid: bc7bc568b1778fa41a7f03841b0d7070, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2.8763487
+      objectReference: {fileID: 0}
+    - target: {fileID: 941097282159767797, guid: bc7bc568b1778fa41a7f03841b0d7070, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 2.875
       objectReference: {fileID: 0}
     - target: {fileID: 5407223556578535492, guid: bc7bc568b1778fa41a7f03841b0d7070, type: 3}
       propertyPath: m_RootOrder
@@ -78,6 +90,14 @@ PrefabInstance:
     - target: {fileID: 5407223556578535498, guid: bc7bc568b1778fa41a7f03841b0d7070, type: 3}
       propertyPath: m_Name
       value: Slime Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 8315803814883498621, guid: bc7bc568b1778fa41a7f03841b0d7070, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2.8763487
+      objectReference: {fileID: 0}
+    - target: {fileID: 8315803814883498621, guid: bc7bc568b1778fa41a7f03841b0d7070, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 2.875
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc7bc568b1778fa41a7f03841b0d7070, type: 3}

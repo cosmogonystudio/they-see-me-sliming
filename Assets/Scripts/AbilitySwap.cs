@@ -149,6 +149,8 @@ public class AbilitySwap : MonoBehaviour
         boxCollider2D.enabled = true;
         boxCollider2D.isTrigger = true;
 
+        currentSlime.transform.Translate(0.15f * Vector3.down);
+
         CannonAbility cannonAbility = currentSlime.gameObject.AddComponent<CannonAbility>();
         cannonAbility.reach = 6f;
         cannonAbility.height = 2f;

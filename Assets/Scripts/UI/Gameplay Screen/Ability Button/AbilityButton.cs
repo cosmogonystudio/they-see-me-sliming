@@ -6,8 +6,7 @@ using DG.Tweening;
 public abstract class AbilityButton : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
 
-    [HideInInspector]
-    public AbilitySwap.AbilityType abilityType;
+    protected AbilitySwap.AbilityType abilityType;
 
     [SerializeField]
     [Range(0f, 1f)]
@@ -37,30 +36,24 @@ public abstract class AbilityButton : MonoBehaviour, IPointerClickHandler, IPoin
         transform.DOScale(new Vector3(1f, 1f, 1f), 0.1f);
     }
 
+    public void ResetButton()
+    {
+        mainImage.color = defaultColor;
+        secondaryImage.color = defaultColor;
+    }
+
+    public void HighlightButton()
+    {
+        mainImage.color = Color.magenta;
+        secondaryImage.color = Color.magenta;
+    }
+
     protected virtual void Awake()
     {
         mainImage = GetComponent<Image>();
-    }
-
-    void Start()
-    {
         secondaryImage = transform.Find("Hotkey").GetComponent<Image>();
 
         defaultColor = mainImage.color;
-    }
-
-    void Update()
-    {
-        if (GameManager.GetInstance().GetAbilityType() == abilityType)
-        {
-            mainImage.color = Color.magenta;
-            secondaryImage.color = Color.magenta;
-        }
-        else 
-        {
-            mainImage.color = defaultColor;
-            secondaryImage.color = defaultColor;
-        }
     }
 
 }

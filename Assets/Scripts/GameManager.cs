@@ -4,15 +4,18 @@ public class GameManager : MonoBehaviour
 {
 
     [HideInInspector]
-    public System.Action onGameOver;
+    public System.Action onLevelOver;
 
     [SerializeField]
     private AbilitySwap abilitySwap;
 
     [SerializeField]
+    private Hotbar hotbar;
+
+    [SerializeField]
     private SlimeSpawner currentSpawner;
 
-    private Slime.SlimeStatus gameOverSlimeStatus;
+    private Slime.SlimeStatus levelOverSlimeStatus;
 
     private int slimesItCount;
     private int slimesUsedCount;
@@ -57,9 +60,9 @@ public class GameManager : MonoBehaviour
 
         if (slimesItCount >= currentSpawner.SpawnNumber())
         {
-            gameOverSlimeStatus = slimeStatus;
+            levelOverSlimeStatus = slimeStatus;
 
-            switch (gameOverSlimeStatus)
+            switch (levelOverSlimeStatus)
             {
                 case Slime.SlimeStatus.Used:
                     Debug.Log("Restart");
@@ -75,16 +78,16 @@ public class GameManager : MonoBehaviour
                     break;
             }
 
-            if (onGameOver != null)
+            if (onLevelOver != null)
             {
-                onGameOver.Invoke();
+                onLevelOver.Invoke();
             }
         }
     }
 
-    public Slime.SlimeStatus GetGameOverSlimeStatus()
+    public Slime.SlimeStatus GetLevelOverSlimeStatus()
     {
-        return gameOverSlimeStatus;
+        return levelOverSlimeStatus;
     }
 
     public AbilitySwap.AbilityType GetAbilityType()
@@ -94,6 +97,8 @@ public class GameManager : MonoBehaviour
 
     public void SetAbilityType(AbilitySwap.AbilityType abilityType)
     {
+        hotbar.HighlightButton((int)abilityType);
+
         abilitySwap.SetAbilityType(abilityType);
     }
 
@@ -119,7 +124,7 @@ public class GameManager : MonoBehaviour
         slimesDeeperCount = 0;
         slimesUsedCount = 0;
 
-        gameOverSlimeStatus = Slime.SlimeStatus.Default;
+        levelOverSlimeStatus = Slime.SlimeStatus.Default;
     }
 
     void Awake()
@@ -128,7 +133,7 @@ public class GameManager : MonoBehaviour
         {
             instance = this;
 
-            onGameOver = null;
+            onLevelOver = null;
         }
         else
         if (instance != this)

@@ -30,7 +30,7 @@ public class TestManager : MonoBehaviour
     {
         levelIndex = 0;
 
-        GameManager.GetInstance().onGameOver = CheckTest;
+        GameManager.GetInstance().onLevelOver = CheckTest;
 
         SetCurrentLevel();
     }
@@ -94,7 +94,7 @@ public class TestManager : MonoBehaviour
 
     private void CheckTest()
     {
-        switch (GameManager.GetInstance().GetGameOverSlimeStatus())
+        switch (GameManager.GetInstance().GetLevelOverSlimeStatus())
         {
             case Slime.SlimeStatus.Dead:
                 StartCoroutine(Reload());
