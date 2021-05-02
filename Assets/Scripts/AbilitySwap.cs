@@ -22,11 +22,15 @@ public class AbilitySwap : MonoBehaviour
     [SerializeField]
     private float pauseSeconds;
 
+    [SerializeField]
+    private PhysicsMaterial2D bouncyMaterial;
+
     private AbilityType currentAbilityType = AbilityType.None;
     private Slime currentSlime = null;
     private bool currentUsing = false;
 
     private int defaultLayer;
+    private int floorLayer;
 
     private Vector2 boatSize = new Vector2(4.85f, 1.6f);
 
@@ -92,6 +96,7 @@ public class AbilitySwap : MonoBehaviour
     void Awake()
     {
         defaultLayer = LayerMask.NameToLayer("Default");
+        floorLayer = LayerMask.NameToLayer("Floor");
     }
 
     IEnumerator OnHorn(Slime slime, List<Slime> ableSlimes)
@@ -117,7 +122,10 @@ public class AbilitySwap : MonoBehaviour
     {
         currentSlime.Crafted(AbilityType.Bridge);
 
-        Craft(currentSlime.gameObject);
+        currentSlime.gameObject.tag = untaggedTag;
+        currentSlime.gameObject.layer = floorLayer;
+
+        currentSlime.GetComponent<SlimeCheckGround>().enabled = false;
 
         currentSlime.GetComponent<CapsuleCollider2D>().enabled = false;
         currentSlime.GetComponent<PolygonCollider2D>().enabled = true;
@@ -166,6 +174,7 @@ public class AbilitySwap : MonoBehaviour
         CapsuleCollider2D capsuleCollider2D = currentSlime.GetComponent<CapsuleCollider2D>();
         capsuleCollider2D.direction = CapsuleDirection2D.Horizontal;
         capsuleCollider2D.size = boatSize;
+        capsuleCollider2D.sharedMaterial = bouncyMaterial;
 
         currentSlime.GetComponent<Rigidbody2D>().mass = 0.003f * 1000f;
 

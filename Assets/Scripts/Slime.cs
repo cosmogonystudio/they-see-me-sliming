@@ -73,14 +73,17 @@ public class Slime : MonoBehaviour
         slimeStatus = SlimeStatus.Default;
     }
 
-    public void Fall()
+    public void Fall(bool animate = true)
     {
         m_rigidbody2D.WakeUp();
 
-        spriteRenderer.sprite = spriteFall;
+        if (animate)
+        {
+            spriteRenderer.sprite = spriteFall;
 
-        animator.speed = 0f;
-        animator.enabled = false;
+            animator.speed = 0f;
+            animator.enabled = false;
+        }
 
         slimeStatus = SlimeStatus.InAir;
     }

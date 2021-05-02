@@ -60,15 +60,22 @@ public class SlimeCheckGround : MonoBehaviour
             else
             if (slime.GetSlimeStatus() != Slime.SlimeStatus.Default)
             {
+                currentFallTime = 0f;
+
                 slime.KeepWalking();
             }
         }
         else
-        if (slime.GetSlimeStatus() != Slime.SlimeStatus.InAir)
+        if (slime.GetSlimeStatus() == Slime.SlimeStatus.InAir)
         {
-            currentFallTime = 0f;
-
-            slime.Fall();
+            if (currentFallTime > 0.1f)
+            {
+                slime.Fall();
+            }
+        }
+        else
+        {
+            slime.Fall(false);
         }
     }
 

@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseSeconds: 3
+  bouncyMaterial: {fileID: 6200000, guid: fb1dcf7b825c72f418f88191a5c3ad36, type: 2}
 --- !u!114 &7451666863663898821
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -19,7 +19,7 @@ public class Hotbar : MonoBehaviour
     {
         ResetButtons();
 
-        if (index > 0 && index < abilityButtons.Length)
+        if (index < abilityButtons.Length)
         {
             abilityButtons[index].HighlightButton();
         }
