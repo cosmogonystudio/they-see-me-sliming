@@ -68,7 +68,7 @@ public class SlimeCheckGround : MonoBehaviour
         else
         if (slime.GetSlimeStatus() == Slime.SlimeStatus.InAir)
         {
-            if (currentFallTime > 0.1f)
+            if (currentFallTime > 0.05f)
             {
                 slime.Fall();
             }

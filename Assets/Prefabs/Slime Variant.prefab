@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1902832373, guid: bc7bc568b1778fa41a7f03841b0d7070, type: 3}
       propertyPath: maxFallTime
-      value: 0.75
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1902832373, guid: bc7bc568b1778fa41a7f03841b0d7070, type: 3}
       propertyPath: groundLayerMask.m_Bits
@@ -141,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8315803814883498621, guid: bc7bc568b1778fa41a7f03841b0d7070, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].x
-      value: -2.2
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 8315803814883498621, guid: bc7bc568b1778fa41a7f03841b0d7070, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[0].y
@@ -165,7 +165,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8315803814883498621, guid: bc7bc568b1778fa41a7f03841b0d7070, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].x
-      value: 2.2
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8315803814883498621, guid: bc7bc568b1778fa41a7f03841b0d7070, type: 3}
       propertyPath: m_Points.m_Paths.Array.data[0].Array.data[3].y
