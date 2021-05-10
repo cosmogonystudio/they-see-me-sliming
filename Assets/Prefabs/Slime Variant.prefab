@@ -13,7 +13,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1902832373, guid: bc7bc568b1778fa41a7f03841b0d7070, type: 3}
       propertyPath: maxFallTime
-      value: 1
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 1902832373, guid: bc7bc568b1778fa41a7f03841b0d7070, type: 3}
       propertyPath: groundLayerMask.m_Bits

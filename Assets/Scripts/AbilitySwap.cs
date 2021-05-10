@@ -125,6 +125,13 @@ public class AbilitySwap : MonoBehaviour
         currentSlime.gameObject.tag = untaggedTag;
         currentSlime.gameObject.layer = floorLayer;
 
+        currentSlime.transform.localScale = new Vector3(
+            currentSlime.transform.localScale.x * 1.5f,
+            currentSlime.transform.localScale.y,
+            currentSlime.transform.localScale.z
+        );
+
+        currentSlime.GetComponent<Slime>().enabled = false;
         currentSlime.GetComponent<SlimeCheckGround>().enabled = false;
 
         currentSlime.GetComponent<CapsuleCollider2D>().enabled = false;
@@ -169,14 +176,16 @@ public class AbilitySwap : MonoBehaviour
     {
         currentSlime.Crafted(AbilityType.Boat);
 
-        Craft(currentSlime.gameObject);
+        currentSlime.GetComponent<Slime>().enabled = false;
+        currentSlime.GetComponent<SlimeCheckGround>().enabled = false;
 
         CapsuleCollider2D capsuleCollider2D = currentSlime.GetComponent<CapsuleCollider2D>();
         capsuleCollider2D.direction = CapsuleDirection2D.Horizontal;
         capsuleCollider2D.size = boatSize;
         capsuleCollider2D.sharedMaterial = bouncyMaterial;
+        currentSlime.gameObject.layer = floorLayer;
 
-        currentSlime.GetComponent<Rigidbody2D>().mass = 0.003f * 1000f;
+        currentSlime.GetComponent<Rigidbody2D>().mass = 30f;
 
         currentSlime.gameObject.AddComponent<Boat>();
     }

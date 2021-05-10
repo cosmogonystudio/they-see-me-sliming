@@ -1167,7 +1167,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7451666863663898820, guid: 162fb072818b6e44e93232ddbce5e053, type: 3}
       propertyPath: pauseSeconds
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7451666863663898820, guid: 162fb072818b6e44e93232ddbce5e053, type: 3}
       propertyPath: bridgeLayer.m_Bits

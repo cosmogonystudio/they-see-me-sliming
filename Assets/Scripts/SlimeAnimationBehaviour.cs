@@ -8,6 +8,7 @@ public class SlimeAnimationBehaviour : StateMachineBehaviour
     public const string animationHorn = "Horn";
     public const string animationScared = "Scared";
     public const string animationDie = "Die";
+    public const string animationBullet = "Bullet";
     
     private int stateHashCraft;
     private int stateHashHorn;
@@ -24,9 +25,7 @@ public class SlimeAnimationBehaviour : StateMachineBehaviour
 
     public override void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        int currentShortNameHash = animator.GetCurrentAnimatorStateInfo(layerIndex).shortNameHash;
-        
-        if (currentShortNameHash == stateHashCraft)
+        if (stateInfo.shortNameHash == stateHashCraft)
         {
             animator.speed = 0f;
             animator.enabled = false;
@@ -34,20 +33,23 @@ public class SlimeAnimationBehaviour : StateMachineBehaviour
             GameManager.GetInstance().OnAbilityUse();
         }
         else
-        if (currentShortNameHash == stateHashHorn)
+        if (stateInfo.shortNameHash == stateHashHorn)
         {
             animator.speed = 0f;
+            animator.enabled = false;
 
             GameManager.GetInstance().OnAbilityUse();
         }
         else
-        if (currentShortNameHash == stateHashScared)
+        if (stateInfo.shortNameHash == stateHashScared)
         {
             animator.speed = 0f;
+            animator.enabled = false;
         }
         else
-        if (currentShortNameHash == stateHashDie)
+        if (stateInfo.shortNameHash == stateHashDie)
         {
+            GameManager.GetInstance().SlimeIt(Slime.SlimeStatus.Dead);
             animator.gameObject.SetActive(false);
         }
     }

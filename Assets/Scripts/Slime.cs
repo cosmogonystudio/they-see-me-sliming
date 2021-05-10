@@ -96,6 +96,7 @@ public class Slime : MonoBehaviour
 
         spriteRenderer.sprite = spriteScared;
 
+        animator.enabled = true;
         animator.speed = 1f;
         animator.SetTrigger(SlimeAnimationBehaviour.animationScared);
     }
@@ -126,22 +127,29 @@ public class Slime : MonoBehaviour
 
     public void Use(AbilitySwap.AbilityType abilityType)
     {
-        slimeStatus = SlimeStatus.Used;
-
         if (abilityType == AbilitySwap.AbilityType.Horn)
         {
+            slimeStatus = SlimeStatus.Paused;
+
             animator.SetTrigger(SlimeAnimationBehaviour.animationHorn);
 
             AudioManager.GetInstance().PlayAbility(AbilitySwap.AbilityType.Horn);
         }
         else
         {
+            slimeStatus = SlimeStatus.Used;
+
             animator.SetTrigger(SlimeAnimationBehaviour.animationCraft);
 
             AudioManager.GetInstance().PlayStatus(SlimeStatus.Used);
 
             SlimeIt();
         }
+    }
+
+    public void Bullet(bool isBullet)
+    {
+        animator.SetBool(SlimeAnimationBehaviour.animationBullet, isBullet);
     }
 
     public void Die()
@@ -153,8 +161,6 @@ public class Slime : MonoBehaviour
         animator.enabled = true;
         animator.speed = 1.5f;
         animator.SetTrigger(SlimeAnimationBehaviour.animationDie);
-
-        SlimeIt();
     }
 
     public void DeeperAndDeeper()
@@ -182,11 +188,6 @@ public class Slime : MonoBehaviour
         animator = GetComponent<Animator>();
 
         spriteRenderer = GetComponent<SpriteRenderer>();
-    }
-
-    void Start()
-    {
-        animator.speed = 0f;
     }
 
     private void SlimeIt()

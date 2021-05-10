@@ -26,9 +26,10 @@ public class CannonAbility : SlimeTrigger
 
             yield return new WaitForEndOfFrame();
 
-            t += 0.005f;
+            t += 0.004f;
         }
 
+        target.GetComponent<Slime>().Bullet(false);
         target.GetComponent<SlimeCheckGround>().enabled = true;
     }
 
@@ -36,9 +37,11 @@ public class CannonAbility : SlimeTrigger
     {
         slime.GetComponent<SlimeCheckGround>().enabled = false;
 
+        AudioManager.GetInstance().PlayAbility(AbilitySwap.AbilityType.Cannon);
+
         CalculatePoints(slime.transform);
 
-        AudioManager.GetInstance().PlayAbility(AbilitySwap.AbilityType.Cannon);
+        slime.Bullet(true);
 
         StartCoroutine(LerpThatShit(slime.gameObject.GetComponent<Rigidbody2D>()));
     }
